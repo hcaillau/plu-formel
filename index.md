@@ -2,7 +2,7 @@
 
 ## Les besoins des utilisateurs finaux
 
-Etre capable en fonction du PLU de :
+Être capable en fonction du PLU de :
 
 * Visualiser les effets du règlement
     * Visualiser la hauteur maximum de construction 
@@ -14,17 +14,19 @@ Etre capable en fonction du PLU de :
 
 ## Problème
 
-Pour répondre à ces besoins, il faut **être capable d'interpréter informatiquement les règles définies dans les PLU**, c'est à dire :
+Pour répondre à ces besoins, il faut **être capable d'interpréter informatiquement les règles définies dans les PLU**
+
+Toutefois :
 
 * Les règlements des documents d'urbanisme en format texte ne sont pas interprétables par des machines
-* L'extraction de modèle de ces textes est loin d'être triviale
+* L'extraction de modèles de ces textes est loin d'être triviale
 
 
 ## Approche SimPLU
 
-L'approche qui se dégage des travaux de SimPLU après plusieurs expérimentations consiste à établir une bible de règle.
+L'approche qui se dégage des travaux de SimPLU après plusieurs expérimentations consiste à établir une bible de règles.
 
-Cette bible de règle s'apparente aux articles que l'on retrouve dans retrouve dans les documents d'urbanismes avec une identification des paramètres. Par exemple : `Une bande de {{LARGEUR}} m (par rapport au fond de la parcelle) est inconstructible.`
+Cette bible de règles s'apparente aux articles que l'on retrouve dans les documents d'urbanismes avec une identification des paramètres. Par exemple : `Une bande de {{LARGEUR}} m (par rapport au fond de la parcelle) est inconstructible.`
 
 Dans un monde idéal pour SimPLU, le règlement d'urbanisme est l'instanciation de ces règles avec des paramètres spécifiques à chaque zonage. 
 
@@ -47,7 +49,7 @@ Cette approche est guidée par les points suivants :
 
 ### 1) Codification d'une bible de règle officielle
 
-* Un code : `ART0001`
+* Un code : `A0001`
 * Un modèle d'article : `Une bande de {{A}} m (par rapport au fond de la parcelle) est inconstructible.` 
 * Une fiche descriptive présentant la méthode d'interprétation
 
@@ -56,14 +58,14 @@ Remarque : C'est en raison de l'absence d'une bible officielle des articles que 
 
 ### 2) Instanciation des règles dans ZONE_URBA
 
- * Colonne `LIB_ART0001_A` : valeur du paramètre "{{A}}" dans le modèle d'article.
+ * Colonne `LIB_A0001_A` : valeur du paramètre "{{A}}" dans le modèle d'article.
 
 
 ## Avantages
 
 * Il est possible de mettre en oeuvre un code informatique de validation face à modèle d'article (le PLU devient interprétable numériquement)
 
-* Il est possible d'interpréter facilement seulement certains types de règle (visualisation à la volée d'une hauteur maximum codée dans LIB_ART0123_A)
+* Il est possible d'interpréter facilement seulement certains types de règle (visualisation à la volée d'une hauteur maximum codée dans LIB_A0123_A)
 
 * Permet aussi de mettre en oeuvre des outils de génération des pièces écrites
 
