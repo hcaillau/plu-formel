@@ -53,30 +53,62 @@ Cette approche est guidée par les points suivants :
 * Un modèle d'article : `Une bande de {{A}} m (par rapport au fond de la parcelle) est inconstructible.` 
 * Une fiche descriptive présentant la méthode d'interprétation
 
-Remarque : C'est en raison de l'absence d'une bible officielle des articles que SimPLU travaille actuellement sur une table de règle séparées.
+Remarque : 
+
+* C'est en raison de l'absence d'une bible officielle des articles que SimPLU travaille actuellement sur une table de règle séparées
+* Cette modélisation de règle doit être étendue pour les autres besoins. Par exemplement : 
+    *  Ajouter une classification : "EMPRISE AU SOL DES CONSTRUCTIONS", "HAUTEUR MAXIMALE DES CONSTRUCTIONS", etc.) pour permettre le regroupement des règles dans des articles.
+    
+ 
+
+### 2) Scénario d'instanciation des règles à étudier
+
+### 2.1) Implémentation des règles dans ZONE_URBA
+
+ * Colonne `LIB_A0001_A` : valeur du paramètre "{{A}}" dans le modèle d'article `A0001`.
+
+### 2.2) Mise en oeuvre d'un format dédié (json, xml, rdf, etc.)
+
+En travaillant sur un modèle de plan de PLU, il doit être possible d'instancier ces règles en collant mieux à la structure d'un règlement d'urbanisme.
 
 
-### 2) Instanciation des règles dans ZONE_URBA
+## Avantages 
 
- * Colonne `LIB_A0001_A` : valeur du paramètre "{{A}}" dans le modèle d'article.
+### Bible des règles
 
+* Il est possible de mettre en oeuvre un code informatique de validation face à chaque règle (le PLU devient interprétable numériquement)
 
-## Avantages
+* La bible des règles peut servir de support pour mettre en oeuvre des outils de génération des pièces écrites
 
-* Il est possible de mettre en oeuvre un code informatique de validation face à modèle d'article (le PLU devient interprétable numériquement)
+Chaque technique d'implémentation offrira des avantages propres.
+
+### Scénario 2.1
 
 * Il est possible d'interpréter facilement seulement certains types de règle (visualisation à la volée d'une hauteur maximum codée dans LIB_A0123_A)
 
-* Permet aussi de mettre en oeuvre des outils de génération des pièces écrites
-
 * Pas de révolution du standard CNIG
 
-* ...
+### Scénario 2.2
+
+* Sera plus facilement extensible
+* Permet de viser à terme le remplacement intégral du règlement PDF (génération en fonction du règlement formalisé)?
+
 
 ## Inconvénients
 
-* Les PLU existant ne sont pas interprétables (on gagne toutefois un cadre pour stocker des résultats de travaux de machine learning sur les PLU)
+### Bible des règles
 
+Il faudra traiter le cas des réglements existants qui n'ont pas été formalisé. On gagne toutefois un cadre pour cette formalisation et pour l'extraction d'information via les travaux de machine learning par exemple.
+
+
+### Scénario 2.1
+
+* Risque de faire gonfler le nombre de colonne dans la table ZONE_URBA au point d'être inexploitable (se concentrer sur les principales règles que l'on veut/peut interpréter automatiquement?)
+
+### Scénario 2.2
+
+* Effort de modélisation conséquent à réaliser pour que la généricité ne rende pas la donnée inexploitable
+* Nécessitera la mise en oeuvre d'outil d'accompagnement pour l'édition des règles
 
 
 ## Preuve de concept (TODO)
