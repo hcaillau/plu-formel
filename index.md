@@ -58,7 +58,8 @@ Remarque :
 * C'est en raison de l'absence d'une bible officielle des articles que SimPLU travaille actuellement sur une table de règle séparées
 * Cette modélisation de règle doit être étendue pour les autres besoins. Par exemplement : 
     *  Ajouter une classification : "EMPRISE AU SOL DES CONSTRUCTIONS", "HAUTEUR MAXIMALE DES CONSTRUCTIONS", etc.) pour permettre le regroupement des règles dans des articles.
-    
+
+[Comm MBrasebin] : L'avantage de cette méthode est qu'elle permet de simplement modéliser le réglement et de le maintenir, l'inconvéniant est une une faible expressivité et un risque de devoir gérer beaucoup beacoup de paramètres. Une règle comme "HAUTEUR MAXIMALE DES CONSTRUCTIONS" peut varier en fonction du type de bâtiment concerné, de la voirie adjacente, etc., il faudra réfléchir au bon compromis entre exhaustivité dans la représentation réglementaire et choix pratiques.    
  
 
 ### 2) Scénario d'instanciation des règles à étudier
