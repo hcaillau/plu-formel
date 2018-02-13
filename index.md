@@ -113,6 +113,6 @@ Il faudra traiter le cas des réglements existants qui n'ont pas été formalis�
 
 
 ## Preuve de concept (TODO)
-
+* Identifier le corpus de règles qu'il semble nécessaire de modéliser
 * Codifier la bible SimPLU dans ce modèle
 * Configurer une carte QuantumGIS pour visualiser le texte associé à une zone
