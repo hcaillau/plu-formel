@@ -1,6 +1,6 @@
 # RENNES-004 - Règle de prospect 
 
-## Modèle de phrase
+## Modèle de phrase
 
 > Si la largeur de la rue est inférieure à {{largMaxProspect1}}, le gabarit 3D de bâtiment doit se trouver 
 > sous un prospect mesuré à partir de l'autre côté de la voirie défini 
@@ -9,11 +9,11 @@
 >
 > Les contraintes sont relatives à la voie ou la marge de recul. 
 
-## Paramètres 
+## Paramètres 
 
 TODO
 
-## Explications
+## Explications
 
 TODO
 

@@ -7,11 +7,11 @@
 > (cf. tirets rouges sur la coupe précédente pour une hauteur de façade égale à Y). La hauteur maximale est inférieure à la hauteur de la façade + 6 m 
 
 
-## Paramètres 
+## Paramètres 
 
 TODO
 
-## Explications
+## Explications
 
 TODO
 

@@ -4,7 +4,7 @@
 
 * [CORE-0001.md](CORE-0001.md)
 
-## Règles du démonstrateur SimPLU
+## Règles du démonstrateur SimPLU
 
 * [RENNES-001.md](RENNES-001.md)
 * [RENNES-002.md](RENNES-002.md)

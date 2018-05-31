@@ -4,11 +4,11 @@
 
 > En distance latéral, les façades du bâtiment doivent vérifier un recul compris entre {{reculLatMin}} et {{reculLatMax}} m. 
 
-## Paramètres 
+## Paramètres 
 
 TODO
 
-## Explications
+## Explications
 
 TODO
 

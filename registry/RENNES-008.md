@@ -4,11 +4,11 @@
 
 > La hauteur maximale du bâtiment est inférieure à la hauteur de la façade + {{hauteurMaxFacade}} m. 
 
-## Paramètres 
+## Paramètres 
 
 TODO
 
-## Explications
+## Explications
 
 TODO
 

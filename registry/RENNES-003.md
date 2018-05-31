@@ -1,6 +1,6 @@
 # RENNES-003 - Coefficient d'emprise au sol (cas 2)
 
-## Modèle de phrase
+## Modèle de phrase
 
 > Pour les terrains dont l'une des caractéristiques en matière de superficie et de largeur de façade
 > ne répond pas aux critères fixés ci-dessus, le coefficient d'emprise au sol, y compris les constructions annexes, 
@@ -8,11 +8,11 @@
 
 Note : ci-dessus se refère aux critères de [RENNES-002](RENNES-002.md)
 
-## Paramètres 
+## Paramètres 
 
 TODO
 
-## Explications
+## Explications
 
 TODO
 
