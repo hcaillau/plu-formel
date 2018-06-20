@@ -13,7 +13,7 @@
 
 Il n'est pas possible de construire un bâtiment dans une zone de {{B1_ART_6}} m mesurée à partir de la voirie.
 
-![Image illustrant le recul par rapport à la voirie](../img/rules/IAUIDF/IAUIDF-001.png)
+![Image illustrant le recul par rapport à la voirie](/../img/rules/IAUIDF/IAUIDF-001.png)
 
 ## Implémentation
 
