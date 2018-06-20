@@ -17,12 +17,20 @@
 * [RENNES-009.md](RENNES-009.md)
 * [RENNES-010.md](RENNES-010.md)
 
+## Règles issues du modèle CartoPLU+ développé par l'IAUIDF
+
+La première règle définit le nombre de bandes de constructibilité et leurs dimensions. S'il y en a deux, les règles de IAUIDF-001 à IAUIDF-008 sont définies pour les deux bandes.
+* [IAUIDF-000.md](IAUIDF-000.md)
+* [IAUIDF-001.md](IAUIDF-001.md)
+* [IAUIDF-002.md](IAUIDF-002.md)
+* [IAUIDF-003.md](IAUIDF-003.md)
+* [IAUIDF-004.md](IAUIDF-004.md)
+* [IAUIDF-005.md](IAUIDF-005.md)
+* [IAUIDF-006.md](IAUIDF-006.md)
+* [IAUIDF-007.md](IAUIDF-007.md)
+* [IAUIDF-008.md](IAUIDF-008.md)
+
 ## Remarque
 
-* Certaines règles sont porteuses de conditionnelle
+* Certaines règles sont porteuses de conditions
 * Il conviendrait d'ajouter un dossier "def" pour illustrer les notions de fonds de parcelles, de bandes de constructibilité, etc.
-
-
-
-
-
