@@ -12,7 +12,7 @@
 
 {{B1_ART_10_m}} désigne la hauteur maximale des bâtiments
 
-![Image montrant la contrainte de hauteur maximale d'un bâtiment](./../master/img/rules/IAUIDF/IAUIDF-007.png)
+![Image montrant la contrainte de hauteur maximale d'un bâtiment](img/rules/IAUIDF/IAUIDF-007.png)
 
 ## Implémentation
 

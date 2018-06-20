@@ -18,7 +18,7 @@
 
 S'il n'y a que zéro ou une bande de constructibilité (paramètre {{B1_T_BANDE}}), une seule série de règles s'appliquera sur l'ensemble de la parcelle. Sinon, deux séries de règles s'appliqueront sur les deux bandes de constructibilité définies à partir de la distance {{B1_BANDE}}  mesurée à la voirie.
 
-![Image illustrant les bandes de constructibilité](./../master/img/rules/IAUIDF/IAUIDF-000.png)
+![Image illustrant les bandes de constructibilité](img/rules/IAUIDF/IAUIDF-000.png)
 
 
 ## Implémentation

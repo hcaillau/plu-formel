@@ -20,7 +20,7 @@ Suivant les cas imposés par {{B1_ART_72}} :
 * si {{B1_ART_72}} = 1, le bâtiment doit être construit des deux côtés de la parcelle ;
 * si {{B1_ART_72}} = 2, le bâtiment doit être collé d'un côté de la parcelle et respecter un recul par rapport à l'autre côté.
 
-![Image illustrant les contraintes par rapport aux limites latérales](./../master/img/rules/IAUIDF/IAUIDF-002.png)
+![Image illustrant les contraintes par rapport aux limites latérales](img/rules/IAUIDF/IAUIDF-002.png)
 
 ## Implémentation
 

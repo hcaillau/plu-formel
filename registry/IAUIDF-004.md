@@ -12,7 +12,7 @@
 
 {{B1_ART_74}}  représente la pente du plan sous lequel le bâtiment doit se trouver.
 
-![Image montrant la limitation de la hauteur maximale en fonction du coefficient {{B1_ART_74}} ](./../master/img/rules/IAUIDF/IAUIDF-004.png)
+![Image montrant la limitation de la hauteur maximale en fonction du coefficient {{B1_ART_74}} ](img/rules/IAUIDF/IAUIDF-004.png)
 
 ## Implémentation
 
