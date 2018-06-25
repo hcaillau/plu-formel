@@ -121,7 +121,10 @@ Le dossier [registry](registry/index.md) donne une idée de ce à quoi pourrait 
 
 Remarque : Il conviendra de le compléter avec les règles [SimPLU](https://github.com/SimPLU3D/) définie pour IAU IDF.
 
-Le fichier [sample/rennes.csv](sample/rennes.csv) illustre le principe d'instanciation des règles "RENNES-" à l'aide d'un fichier CSV.
+Le fichier [sample/rennes.csv](sample/rennes.csv) illustre le principe d'instanciation des règles "RENNES-" à l'aide d'un fichier CSV où :
+
+* La première colonne `Nom_zone` permet d'identifier la zone concernée du PLU
+* Les colonnes suivantes correspondent aux paramètres d'instanciation des règles
 
 
 ## 6 - Preuve de concept
@@ -234,27 +237,3 @@ Remarque : SimPLU dispose d'une composante [simplu3d-ocl](https://github.com/Sim
 ### 8.3 - Cas de l'instanciation des règles au format CSV
 
 L'avantage de cette méthode est qu'elle permet de simplement modéliser le réglement et de le maintenir. L'inconvéniant est une une faible expressivité et un risque de devoir gérer beaucoup de paramètres. Une règle comme "HAUTEUR MAXIMALE DES CONSTRUCTIONS" peut varier en fonction du type de bâtiment concerné, de la voirie adjacente, etc., il faudra réfléchir au bon compromis entre exhaustivité dans la représentation réglementaire et choix pratiques. 
-
-### 8.4 - Le manque de formalisation empêche l'automatisation dans de nombreux domaines
-
-#### 8.4.1 - Constat
-
-Il convient de noter que l'absence de formalisation ne frappe pas que l'urbanisme.
-
-Dans bien d'autres cas, **les textes devraient être transformés en données** pour pouvoir répondre à la volontée d'automatiser des processus, de monter des API et des applications.
-
-#### 8.4.2 - Cas des changements de noms de communes
-
-Les informations sont les changements de commune sont prisonnières de décret : Il faut attendre la constitution de base de références pour mettre à jour des références à des codes INSEE
-* Les informations sur les limitations de vitesse sont prisonnières de décrêt : Il faut relire ces décrêts pour vérifier les limitations en vigueur en cas de constestation d'un PV
-
-#### 8.4.3 - Cas des standards de données
-
-Les définitions de structure de table et d'énumérés sont dans des PDF : Il n'est pas trivial d'écrire un validateur qui s'assure que des jeux de données respectent un standard (**A quand l'open-schema pour rendre l'open-data exloitable à l'échelle nationale? A quand un registre de modèle?**)
-
-
-### 8.5 - La puissance des registres
-
-Les registres peuvent être utilisés pour enrichir les textes. Par exemple, avec un registre des communes et un texte de loi parlant de la commune de [Loray](https://apicarto.ign.fr/api/cadastre/commune?code_insee=25349) en intégrant le texte dans un lien, il devient plus simple de savoir que le texte parle de la commune en question.
-
-Si les registres sont centraux, en quantité limités, les concepteurs d'applications peuvent les prendre en compte. Dans le cas des communes, les concepteurs d'applications peuvent afficher une carte au survol du lien.
