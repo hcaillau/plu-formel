@@ -12,7 +12,7 @@
 
 {{B1_ART_9}} indique le ratio maximal entre la surface bâtie et la surface de la parcelle.
 
-![Image montrant la contrainte de distance entre deux  bâtiments](img/rules/IAUIDF/IAUIDF-006.png)
+![Image montrant la contrainte de distance entre deux  bâtiments](../img/rules/IAUIDF/IAUIDF-006.png)
 
 ## Implémentation
 

@@ -12,7 +12,7 @@
 
 {{B1_ART_13}} désigne le ratio minimum d'espace libre au sein de la parcelle
 
-![Image montrant la contrainte de hauteur maximale d'un bâtiment](img/rules/IAUIDF/IAUIDF-008.png)
+![Image montrant la contrainte de hauteur maximale d'un bâtiment](../img/rules/IAUIDF/IAUIDF-008.png)
 
 ## Implémentation
 

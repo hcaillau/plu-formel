@@ -12,7 +12,7 @@
 
 {{B1_ART_8}} indique la distance minimale qui doit être respectée entre deux bâtiments.
 
-![Image montrant la contrainte de distance entre deux bâtiments](img/rules/IAUIDF/IAUIDF-005.png)
+![Image montrant la contrainte de distance entre deux bâtiments](../img/rules/IAUIDF/IAUIDF-005.png)
 
 ## Implémentation
 

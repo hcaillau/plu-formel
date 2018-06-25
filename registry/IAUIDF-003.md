@@ -12,7 +12,7 @@
 
 Un recul de  {{B1_ART_73}} m s'applique par rapport au fond de la parcelle.
 
-![Image illustrant la contrainte de recul par rapport au fond de la parcelle](img/rules/IAUIDF/IAUIDF-003.png)
+![Image illustrant la contrainte de recul par rapport au fond de la parcelle](../img/rules/IAUIDF/IAUIDF-003.png)
 
 ## Implémentation
 
