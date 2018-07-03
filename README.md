@@ -75,23 +75,23 @@ En première approche, il est possible d'instancier les règles d'urbanisme s'ap
 
 Pour instancier les règles sur les zones d'urbanisme, il suffit d'ajouter des colonnes correspondant aux paramètres de ces règles. Par exemple, on aura :
 
-* Pour IAUIDF-000 : [B1_BANDE](registry/IAUIDF-000.md#B1_BANDE) et [B1_T_BANDE](registry/IAUIDF-000.md#B1_T_BANDE)
+* Pour IAUIDF-000 : [B1_BANDE](./registry/IAUIDF-000.md#B1_BANDE) et [B1_T_BANDE](./registry/IAUIDF-000.md#B1_T_BANDE)
 
-* Pour IAUIDF-001 : [B1_ART_6](registry/IAUIDF-001.md#B1_ART_6)
+* Pour IAUIDF-001 : [B1_ART_6](./registry/IAUIDF-001.md#B1_ART_6)
 
-* Pour IAUIDF-002 : [B1_ART_71](registry/IAUIDF-002.md#B1_ART_71) et [B1_ART_72](registry/IAUIDF-002.md#B1_ART_72)
+* Pour IAUIDF-002 : [B1_ART_71](./registry/IAUIDF-002.md#B1_ART_71) et [B1_ART_72](./registry/IAUIDF-002.md#B1_ART_72)
 
-* Pour IAUIDF-003 : [B1_ART_73](registry/IAUIDF-003.md#B1_ART_73)
+* Pour IAUIDF-003 : [B1_ART_73](./registry/IAUIDF-003.md#B1_ART_73)
 
-* Pour IAUIDF-004 : [B1_ART_74](registry/IAUIDF-004.md#B1_ART_74)
+* Pour IAUIDF-004 : [B1_ART_74](./registry/IAUIDF-004.md#B1_ART_74)
 
-* Pour IAUIDF-005 : [B1_ART_8](registry/IAUIDF-005.md#B1_ART_8)
+* Pour IAUIDF-005 : [B1_ART_8](./registry/IAUIDF-005.md#B1_ART_8)
 
-* Pour IAUIDF-006 : [B1_ART_9](registry/IAUIDF-006.md#B1_ART_9)
+* Pour IAUIDF-006 : [B1_ART_9](./registry/IAUIDF-006.md#B1_ART_9)
 
-* Pour IAUIDF-007 : [B1_ART_9](registry/IAUIDF-007.md#B1_ART_10_m)
+* Pour IAUIDF-007 : [B1_ART_9](./registry/IAUIDF-007.md#B1_ART_10_m)
 
-* Pour IAUIDF-008 : [B1_ART_13](registry/IAUIDF-008.md#B1_ART_13)
+* Pour IAUIDF-008 : [B1_ART_13](./registry/IAUIDF-008.md#B1_ART_13)
 
 
 ### 3.4.4 - Remarque
