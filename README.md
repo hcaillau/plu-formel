@@ -56,6 +56,56 @@ Une instance de règle est définie par :
 * La valeur des paramètres de la règle (ex : `{HAUTEUR_MAX: 9}`)
 
 
+### 3.4 - Instanciantion des règles par fichier CSV
+
+> ATTENTION : Cette partie est une ébauche pour discussion avec SmartPLU!
+
+En première approche, il est possible d'instancier les règles d'urbanisme s'appliquant sur les zones d'un PLU à l'aide d'un fichier CSV les colonnes décrites ci-après.
+
+### 3.4.1 - Colonnes pour l'identification du document d'urbanisme
+
+* **DOCUMENT** : Nom de dossier du document d'urbanisme standardisé par le CNIG (ex : `25349_PLU_20010101`).
+
+### 3.4.2 - Colonnes pour l'identification de la zone d'urbanisme
+
+* **INSEE** : Code INSEE de la commune associé à la zone d'urbanisme (anciennement `ZONE_URBA.INSEE` qui a été migré dans les noms de fichier dans le standard CNIG 2017)
+* **LIBELLE** : Libellé de zone d'urbanisme (`ZONE_URBA.LIBELLE` dans les standards CNIG)
+
+### 3.4.3 - Colonnes pour l'instanciation des règles
+
+Pour instancier les règles sur les zones d'urbanisme, il suffit d'ajouter des colonnes correspondant aux paramètres de ces règles. Par exemple, on aura :
+
+* Pour IAUIDF-000 : [B1_BANDE](registry/IAUIDF-000.md#B1_BANDE) et [B1_T_BANDE](registry/IAUIDF-000.md#B1_T_BANDE)
+
+* Pour IAUIDF-001 : [B1_ART_6](registry/IAUIDF-001.md#B1_ART_6)
+
+* Pour IAUIDF-002 : [B1_ART_71](registry/IAUIDF-002.md#B1_ART_71) et [B1_ART_72](registry/IAUIDF-002.md#B1_ART_72)
+
+* Pour IAUIDF-003 : [B1_ART_73](registry/IAUIDF-003.md#B1_ART_73)
+
+* Pour IAUIDF-004 : [B1_ART_74](registry/IAUIDF-004.md#B1_ART_74)
+
+* Pour IAUIDF-005 : [B1_ART_8](registry/IAUIDF-005.md#B1_ART_8)
+
+* Pour IAUIDF-006 : [B1_ART_9](registry/IAUIDF-006.md#B1_ART_9)
+
+* Pour IAUIDF-007 : [B1_ART_9](registry/IAUIDF-007.md#B1_ART_10_m)
+
+* Pour IAUIDF-008 : [B1_ART_13](registry/IAUIDF-008.md#B1_ART_13)
+
+
+### 3.4.4 - Remarque
+
+Les outils tels SimPLU devront rechercher les géométries en procédant à une jointure entre la table `ZONE_URBA` du `DOCUMENT` et les `colonnes pour l'identification de la zone d'urbanisme`.
+
+Il est possible et souhaitable en guise de variante d'utiliser un format géométrique (shapefile, GeoJSON, etc.) et d'ajouter une colonne géométrique correspondant à la zone concernée par la régulation.
+
+Un tel fichier peut facilement être constitué manuellement en :
+
+* Copiant la table ZONE_URBA par exemple sous le nom ZONE_URBA_RULE
+* Ajoutant les colonnes correspondant aux paramètres des règles
+
+
 ## 4 - Cas d'utilisation
 
 ### 4.1 - Génération des textes de document d'urbanisme
@@ -86,8 +136,6 @@ A titre d'exemple, il n'y a pas de notion de "fond de parcelle" dans les bases c
 
 ![Cas de hauteur définie par niveau](img/32353-ua-hauteur.png)
 
-TODO : ajouter d'autres cas
-
 
 ### 4.3 - Vérification de règles d'urbanisme (ex : permis de construire)
 
@@ -95,7 +143,7 @@ Connaissant un projet de bâtiment défini par un modèle 3D, pour vérifier htt
 
 En procédant de même pour toutes les règles, on peut savoir lesquelles sont respectées ou non.
 
-Là encore, il n'y a pas de magie! Pour chaque règle, il faut du code et un contexte.
+Là encore, il n'y a pas de magie : Pour chaque règle, il faut du code et un contexte.
 
 
 ### 4.4 - Génération de bâtiment

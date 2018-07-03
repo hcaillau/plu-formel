@@ -6,12 +6,18 @@
 > Un alignement est imposé par rapport aux côtés des limites séparatives  {{B1_ART_71}}
 
 ## Paramètres
-*  {{B1_ART_71}}: Distance de recul en m par rapport aux limites séparatives latérales.
-*  {{B1_ART_72}}: Implantation en limite séparatives
-  * 0 : non, retrait imposé (cf.72)
-  * 1 : Oui des deux côtés
-  * 2 : Oui, mais sur un côté seulement
 
+### B1_ART_71
+
+Distance de recul en m par rapport aux limites séparatives latérales.
+
+### B1_ART_72
+
+Implantation en limite séparatives :
+
+* 0 : non, retrait imposé (cf.72)
+* 1 : Oui des deux côtés
+* 2 : Oui, mais sur un côté seulement
 
 ## Explications
 
@@ -20,7 +26,7 @@ Suivant les cas imposés par {{B1_ART_72}} :
 * si {{B1_ART_72}} = 1, le bâtiment doit être construit des deux côtés de la parcelle ;
 * si {{B1_ART_72}} = 2, le bâtiment doit être collé d'un côté de la parcelle et respecter un recul par rapport à l'autre côté.
 
-![Image illustrant les contraintes par rapport aux limites latérales](../img/rules/IAUIDF/IAUIDF-002.png)
+![Image illustrant les contraintes par rapport aux limites latérales](img/IAUIDF/IAUIDF-002.png)
 
 ## Implémentation
 

@@ -5,14 +5,16 @@
 > La part d'espace libre dans la parcelle représente au minimum {{B1_ART_13}} fois l'aire de la parcelle.
 
 ## Paramètres
-*  {{B1_ART_13}} : Valeur maximale de hauteur en m (88= non renseignable, 99=non réglementé)
 
+### B1_ART_13
+
+Désigne le ratio minimum d'espace libre au sein de la parcelle. Valeur entre 0 et 1.
+
+Remarque : Si valeur exprimée en %, convertir en ratio. Ex : 5%= 5/100 = 0,05 ; 85%= 85/100 = 0.85
 
 ## Explications
 
-{{B1_ART_13}} désigne le ratio minimum d'espace libre au sein de la parcelle
-
-![Image montrant la contrainte de hauteur maximale d'un bâtiment](../img/rules/IAUIDF/IAUIDF-008.png)
+![Image montrant la contrainte de hauteur maximale d'un bâtiment](img/IAUIDF/IAUIDF-008.png)
 
 ## Implémentation
 

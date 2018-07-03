@@ -5,14 +5,16 @@
 > La hauteur doit être inférieure à {{B1_ART_74}} fois la distance aux limites séparatives latérales et de fond de la parcelle.
 
 ## Paramètres
-*  {{B1_ART_74}} : Coefficient multiplicateur désignant la hauteur maximale du bâtiment par rapport aux limites séparatives latérales et de fond de parcelle.
 
+### B1_ART_74
+
+Coefficient multiplicateur désignant la hauteur maximale du bâtiment par rapport aux limites séparatives latérales et de fond de parcelle.
 
 ## Explications
 
-{{B1_ART_74}}  représente la pente du plan sous lequel le bâtiment doit se trouver.
+{{B1_ART_74}} représente la pente du plan sous lequel le bâtiment doit se trouver.
 
-![Image montrant la limitation de la hauteur maximale en fonction du coefficient {{B1_ART_74}} ](../img/rules/IAUIDF/IAUIDF-004.png)
+![Image montrant la limitation de la hauteur maximale en fonction du coefficient {{B1_ART_74}} ](img/IAUIDF/IAUIDF-004.png)
 
 ## Implémentation
 
