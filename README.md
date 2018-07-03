@@ -17,9 +17,9 @@ Elle postule que **pour pouvoir vérifier automatiquement les règles d'urbanism
 Formaliser entièrement les documents d'urbanisme est une problématique complexe :
 
 * Le contexte cartographique est complexe (références aux routes, etc.)
-* La conditionnelle est complexe (les règles dépendent du type de construction, etc.) 
+* La conditionnelle est complexe (les règles dépendent du type de construction, etc.)
 
-**On se concentrera d'abord sur la formalisation de règles "primitives" et on traîtera plus tard la composition des règles**. 
+**On se concentrera d'abord sur la formalisation de règles "primitives" et on traîtera plus tard la composition des règles**.
 
 
 ## 3 - Principaux concepts
@@ -90,7 +90,7 @@ Pour instancier les règles sur les zones d'urbanisme, il suffit d'ajouter des c
 
 * Pour IAUIDF-006 : [B1_ART_9](registry/IAUIDF-006.md#B1_ART_9)
 
-* Pour IAUIDF-007 : [B1_ART_9](registry/IAUIDF-007.md#B1_ART_10_m)
+* Pour IAUIDF-007 : [B1_ART_10](registry/IAUIDF-007.md#B1_ART_10_m)
 
 * Pour IAUIDF-008 : [B1_ART_13](registry/IAUIDF-008.md#B1_ART_13)
 
@@ -127,11 +127,11 @@ Dès lors que les règles sont identifiées, il est possible pour chaque règle 
 
 Par exemple, pour https://plu-rule.example.org/registry/CORE-0001, on peut extruder la parcelle en fonction de `HAUTEUR` et colorier le volume en bleu pour matérialiser le volume dans lequel doit se trouver le bâtiment.
 
-Pour une règle de recul par rapport au fond de la parcelle, on peut mettre en évidence une zone en rouge en fonction de `DISTANCE_RECUL` et 
+Pour une règle de recul par rapport au fond de la parcelle, on peut mettre en évidence une zone en rouge en fonction de `DISTANCE_RECUL` et
 
 En cumulant l'ensemble des informations, on peut générer un volume dans lequel doit s'inscrire le bâtiment ce qui donne déjà une idée sur la morphologie d'un quartier engendrée par un PLU.
 
-**Il n'y pas de magie! Pour chaque règle, il faut un code informatique et les référentiels géographiques adéquats.**. 
+**Il n'y pas de magie! Pour chaque règle, il faut un code informatique et les référentiels géographiques adéquats.**.
 
 A titre d'exemple, il n'y a pas de notion de "fond de parcelle" dans les bases cadastrales, encore moins des bandes sur ces parcelles en fonction de ces "fonds de parcelle", etc. Ensuite, si les règles ont des variantes dans la formulation de la hauteur, la machine ne devinera pas la méthode de transposition :
 
@@ -157,7 +157,7 @@ Avec [SimPLU](https://github.com/SimPLU3D/) par exemple, on choisit un modèle d
 
 [SimPLU](https://github.com/SimPLU3D/) explore l'espace des paramètres en générant un ou des bâtiments, il contrôle pour chaque bâtiment généré les règles et conserve le meilleur suivant un critère (ex : le volume).
 
-Remarque : 
+Remarque :
 
 * Il suffit donc en théorie de pouvoir valider les règles pour un modèle 3D de bâtiment pour pouvoir simuler l'effet de ces règles sur la constructibilité.
 * En pratique, il faut aussi être un peu intelligent sur l'ordre de validation des règles (innutile de faire les contrôles coûteux en terme de calcul ne passent pas)
@@ -194,7 +194,7 @@ Le fichier [sample/rennes.csv](sample/rennes.csv) illustre le principe d'instanc
 
 #### 6.1.3 - Limites
 
-C'est la v0 d'un démonstrateur, limité à une zone d'un PLU, avec un ensemble de règles propre à Rennes Métropole, etc. Les idées pour la suite étaient les suivantes : 
+C'est la v0 d'un démonstrateur, limité à une zone d'un PLU, avec un ensemble de règles propre à Rennes Métropole, etc. Les idées pour la suite étaient les suivantes :
 
 * Télécharger automatiquement les données du géoportail de d'urbanisme et les données du cadastre
 * Partager les annotations sur les parcelles
@@ -208,7 +208,7 @@ C'est la v0 d'un démonstrateur, limité à une zone d'un PLU, avec un ensemble 
 
 Cette expérimentation à l'échelle de la région île de France s'appuie sur le même principe d'instanciation règles par fichier CSV que le démonstrateur simplu pour Rennes métropôle.
 
-Les règles sont toutefois différentes : 
+Les règles sont toutefois différentes :
 
 * Voir [registry/IAUIDF-\*.md](registry/index.md)) pour les règles associées
 * Voir [sample/TODO.csv](sample/TODO.csv) pour un exemple d'instanciation des règles par fichier CSV
@@ -284,4 +284,4 @@ Remarque : SimPLU dispose d'une composante [simplu3d-ocl](https://github.com/Sim
 
 ### 8.3 - Cas de l'instanciation des règles au format CSV
 
-L'avantage de cette méthode est qu'elle permet de simplement modéliser le réglement et de le maintenir. L'inconvéniant est une une faible expressivité et un risque de devoir gérer beaucoup de paramètres. Une règle comme "HAUTEUR MAXIMALE DES CONSTRUCTIONS" peut varier en fonction du type de bâtiment concerné, de la voirie adjacente, etc., il faudra réfléchir au bon compromis entre exhaustivité dans la représentation réglementaire et choix pratiques. 
+L'avantage de cette méthode est qu'elle permet de simplement modéliser le réglement et de le maintenir. L'inconvéniant est une une faible expressivité et un risque de devoir gérer beaucoup de paramètres. Une règle comme "HAUTEUR MAXIMALE DES CONSTRUCTIONS" peut varier en fonction du type de bâtiment concerné, de la voirie adjacente, etc., il faudra réfléchir au bon compromis entre exhaustivité dans la représentation réglementaire et choix pratiques.
