@@ -8,7 +8,7 @@
 
 ### B1_ART_14
 
-Désigne le Coefficient d'Occupation du Sol minimal. Il s'agit du rapport entre la surface de plancher bâti et l'air de la parcelle. La surface de plancher représente la surface de tous les planchers de tous les étagse d'un bâtiment. Valeur positive pouvant être supérieure à 1.
+Désigne le Coefficient d'Occupation du Sol minimal. Il s'agit du rapport entre la surface de plancher bâti et l'air de la parcelle. La surface de plancher représente la surface de tous les planchers de tous les étages d'un bâtiment. Valeur positive pouvant être supérieure à 1.
 
 
 ## Explications
