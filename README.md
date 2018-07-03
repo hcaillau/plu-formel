@@ -96,7 +96,7 @@ Pour instancier les règles sur les zones d'urbanisme, il suffit d'ajouter des c
 
 * Pour IAUIDF-009 : [B1_ART_5](registry/IAUIDF-009.md#B1_ART_5)
 
-* Pour IAUIDF-010 : [B1_ART_5](registry/IAUIDF-010.md#B1_ART_14)
+* Pour IAUIDF-010 : [B1_ART_14](registry/IAUIDF-010.md#B1_ART_14)
 
 
 ### 3.4.4 - Remarque
