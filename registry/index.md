@@ -14,6 +14,7 @@ La première règle définit le nombre de bandes de constructibilité et leurs d
 * [IAUIDF-007.md](IAUIDF-007.md)
 * [IAUIDF-008.md](IAUIDF-008.md)
 * [IAUIDF-009.md](IAUIDF-009.md)
+* [IAUIDF-010.md](IAUIDF-010.md)
 
 ## Règles du démonstrateur SimPLU
 
