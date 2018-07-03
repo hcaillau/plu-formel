@@ -69,34 +69,35 @@ En première approche, il est possible d'instancier les règles d'urbanisme s'ap
 ### 3.4.2 - Colonnes pour l'identification de la zone d'urbanisme
 
 * **INSEE** : Code INSEE de la commune associé à la zone d'urbanisme (anciennement `ZONE_URBA.INSEE` qui a été migré dans les noms de fichier dans le standard CNIG 2017)
+* **NOM_COM** : Nom de la commune associée à la zone d'urbanisme
 * **LIBELLE** : Libellé de zone d'urbanisme (`ZONE_URBA.LIBELLE` dans les standards CNIG)
 
 ### 3.4.3 - Colonnes pour l'instanciation des règles
 
 Pour instancier les règles sur les zones d'urbanisme, il suffit d'ajouter des colonnes correspondant aux paramètres de ces règles. Par exemple, on aura :
 
-* Pour IAUIDF-000 : [B1_BANDE](./registry/IAUIDF-000.md#B1_BANDE) et [B1_T_BANDE](./registry/IAUIDF-000.md#B1_T_BANDE)
+* Pour IAUIDF-000 : [B1_BANDE](registry/IAUIDF-000.md#B1_BANDE) et [B1_T_BANDE](registry/IAUIDF-000.md#B1_T_BANDE)
 
-* Pour IAUIDF-001 : [B1_ART_6](./registry/IAUIDF-001.md#B1_ART_6)
+* Pour IAUIDF-001 : [B1_ART_6](registry/IAUIDF-001.md#B1_ART_6)
 
-* Pour IAUIDF-002 : [B1_ART_71](./registry/IAUIDF-002.md#B1_ART_71) et [B1_ART_72](./registry/IAUIDF-002.md#B1_ART_72)
+* Pour IAUIDF-002 : [B1_ART_71](registry/IAUIDF-002.md#B1_ART_71) et [B1_ART_72](registry/IAUIDF-002.md#B1_ART_72)
 
-* Pour IAUIDF-003 : [B1_ART_73](./registry/IAUIDF-003.md#B1_ART_73)
+* Pour IAUIDF-003 : [B1_ART_73](registry/IAUIDF-003.md#B1_ART_73)
 
-* Pour IAUIDF-004 : [B1_ART_74](./registry/IAUIDF-004.md#B1_ART_74)
+* Pour IAUIDF-004 : [B1_ART_74](registry/IAUIDF-004.md#B1_ART_74)
 
-* Pour IAUIDF-005 : [B1_ART_8](./registry/IAUIDF-005.md#B1_ART_8)
+* Pour IAUIDF-005 : [B1_ART_8](registry/IAUIDF-005.md#B1_ART_8)
 
-* Pour IAUIDF-006 : [B1_ART_9](./registry/IAUIDF-006.md#B1_ART_9)
+* Pour IAUIDF-006 : [B1_ART_9](registry/IAUIDF-006.md#B1_ART_9)
 
-* Pour IAUIDF-007 : [B1_ART_9](./registry/IAUIDF-007.md#B1_ART_10_m)
+* Pour IAUIDF-007 : [B1_ART_9](registry/IAUIDF-007.md#B1_ART_10_m)
 
-* Pour IAUIDF-008 : [B1_ART_13](./registry/IAUIDF-008.md#B1_ART_13)
+* Pour IAUIDF-008 : [B1_ART_13](registry/IAUIDF-008.md#B1_ART_13)
 
 
 ### 3.4.4 - Remarque
 
-Les outils tels SimPLU devront rechercher les géométries en procédant à une jointure entre la table `ZONE_URBA` du `DOCUMENT` et les `colonnes pour l'identification de la zone d'urbanisme`.
+Les outils tels SimPLU devront rechercher les géométries des zones concernées par les règles en procédant à une jointure entre la table `ZONE_URBA` du `DOCUMENT` et les `colonnes pour l'identification de la zone d'urbanisme`.
 
 Il est possible et souhaitable en guise de variante d'utiliser un format géométrique (shapefile, GeoJSON, etc.) et d'ajouter une colonne géométrique correspondant à la zone concernée par la régulation.
 
@@ -229,21 +230,13 @@ Le standard CNIG pourrait proposer des extensions pour l'instanciation de ces r�
 
 SmartPLU tente à l'aide de technique d'IA d'extraire les informations des textes des documents d'urbanisme présent sur le [Géoportail de l'urbanisme](https://www.geoportail-urbanisme.gouv.fr).
 
-Dans un premier temps, afin de s'assurer que les résultats sont facilement exploitables par des outils de type SimPLU, SmarPLU produira une instanciation des règles au format CSV avec :
-
-* Les informations permettant d'identifier le PLU
-* Les informations permettant d'identifier la zone d'urbanisme concernées
-* Les paramètres des règles `IAUIDF`
-
-<span style="color: red">TODO : Documenter et référencer le format correspondant</span>
+Dans un premier temps, afin de s'assurer que les résultats sont facilement exploitables par des outils de type SimPLU, SmarPLU produira une instanciation des règles au format CSV sur la base des règles "IAUIDF".
 
 Dès lors, SimPLU pourra prendre ces données en entrée pour :
 
 * Fournir une idée de la constructibilité engendré par le PLU
 * Vérifier que des bâtiments ou projets de bâtiment sont conformes aux règles
 * ...
-
-Remarque : SimPLU dispose d'un ensemble de fonctionnalité, il faudra choisir lesquelles mettre en valeur dans le cadre de SmartPLU et définir des formats facilements exploitables pour la mise en oeuvre de démonstrateur.
 
 
 ### 7.2.2 - Long terme
@@ -253,12 +246,19 @@ L'approche SmartPLU pourrait être intéressante pour :
 * Identifier des modèles d'article récurrent dans les PLU pour compléter le registre des règles
 * Identifier les variantes de formulation (sans quoi on trouvera 150 000 modèles non exploitable)
 
+### 7.3 - APUR
 
-### 7.3 - PLU Manager
+L'APUR publie en opendata une table [PLU HAUTEUR](http://opendata.apur.org/datasets/plu-hauteur/data) conceptuellement proche de l'instanciation CSV des règles d'urbanisme proposée par SimPLU.
+
+On y trouve en effet une colonne "Règlement hauteur" prenant par exemple pour valeur "de 16 à 24m".
+
+
+### 7.4 - PLU Manager
 
 [PLU Manager](https://www.plan-local-d-urbanisme.fr/outil-logiciel-plu-manager/) génère les textes de document d'urbanisme. La fonction "Duplication d'articles existants" n'est pas très loin d'une fonctionnalité de création d'article à partir d'un modèle qui pourrait s'appuyer sur un registre de règle et générer un fichier `reglement.json`
 
-### 7.4 - D'autres idées, d'autres références?
+
+### 7.5 - D'autres idées, d'autres références?
 
 Faire une issue sur le dépôt GitHub
 
