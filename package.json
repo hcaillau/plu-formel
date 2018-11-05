@@ -21,11 +21,9 @@
   },
   "homepage": "https://github.com/hcaillau/plu-formel#readme",
   "dependencies": {
-    "babel-loader": "^8.0.4",
     "webpack": "^4.25.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.2",
     "fs": "0.0.1-security",
     "jquery": "^3.3.1",
     "json-loader": "^0.5.7",
