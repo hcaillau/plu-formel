@@ -1,17 +1,8 @@
-#!/usr/bin/env node
 const request = require('request');
-const jsts = require('jsts');
-const path = require('path');
-const fs = require('fs');
 const showdown = require('showdown');
 const $ = require('jquery');
 
-const getDataDir = require('../src/getDataDir');
-const DATA_PATH = getDataDir();
-
-
 var RulesPLU = function(ruleName, ruleValue, targetDiv){
-    const html;
     const rulesEncode = {'B1_T_BANDE' :'000', 'B1_BANDE' :'000',
                             'B1_ART_71':'002', 'B1_ART_6':'001',
                             'B1_ART_72':'002','B1_ART_73':'003','B1_ART_74':'004',
