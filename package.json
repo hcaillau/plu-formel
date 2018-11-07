@@ -23,6 +23,8 @@
   "dependencies": {
     "@babel/core": "^7.1.5",
     "babel-loader": "^8.0.4",
+    "node-fetch": "^2.2.1",
+    "request-promise": "^4.2.2",
     "webpack": "^4.25.1"
   },
   "devDependencies": {

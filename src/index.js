@@ -1,8 +1,18 @@
-const request = require('request');
+// const request = require('request');
+const rp = require('request-promise');
+const fetch = require('node-fetch');
 const showdown = require('showdown');
 
 var pluFormel = {
     fetchRuleAbstract: function (ruleName) {
+        console.log(ruleName);
+        function checkStatus(res) {
+            if (res.ok) { // res.status >= 200 && res.status < 300
+                return res;
+            } else {
+                throw MyCustomError(res.statusText);
+            }
+        };
         const rulesEncode = {
             'B1_T_BANDE': '000', 'B1_BANDE': '000',
             'B1_ART_71': '002', 'B1_ART_6': '001',
@@ -12,27 +22,55 @@ var pluFormel = {
         };
         var url = 'https://raw.githubusercontent.com/hcaillau/plu-formel/master/registry/IAUIDF-'
             + rulesEncode[ruleName] + '.md';
-        return new Promise(function (resolve, reject) {
-            request(
-                {
-                    method: 'GET',
-                    uri: url
-                },
-                function (error, response, body) {
-                    if (error) {
-                        reject(error);
-                    }
-                    try {
-                        var md = body;
-                        converter = new showdown.Converter();
-                        html = converter.makeHtml(md);
-                        resolve(html);
-                    } catch (err) {
-                        reject("Fail to get template " + number);
-                    }
-                }
-            );
-        });
+         
+     var options = {uri : url}
+     rp(options).then(function(data) {
+        var md = data;
+                converter = new showdown.Converter();
+                html = converter.makeHtml(md);
+                return html 
+        console.log(data)});
+
+
+        // fetch(url)
+        //     .then(checkStatus)
+        //     .then(res => console.log('will not get here...'))
+        //     .then(res => res.text())
+        //     .then(body => console.log(body))
+        //     .catch(err => console.log(err));
+
+        // fetch(url)
+        //     .then(function(data) {
+        //         var md = data;
+        //         converter = new showdown.Converter();
+        //         html = converter.makeHtml(md);
+        //         return html
+        //     })
+        //     .then(function(data) {
+        //         console.log(data);
+        //     })
+        
+        // return new Promise(function (resolve, reject) {
+        //     request(
+        //         {
+        //             method: 'GET',
+        //             uri: url
+        //         },
+        //         function (error, response, body) {
+        //             if (error) {
+        //                 reject(error);
+        //             }
+        //             try {
+        //                 var md = body;
+        //                 converter = new showdown.Converter();
+        //                 html = converter.makeHtml(md);
+        //                 resolve(html);
+        //             } catch (err) {
+        //                 reject("Fail to get template " + number);
+        //             }
+        //         }
+        //     );
+        // });
     },
 
     fillWithRuleValue : function(){
@@ -41,7 +79,9 @@ var pluFormel = {
 
 
 }
+
 module.exports = pluFormel;
+
 
 
  // .then(function(data, ruleValue){
