@@ -1,1 +1,1 @@
-export { default as getHtmlRuleAbstract } from './getHtmlRuleAbstract';
+export { default as pluFormel } from './getHtmlRuleAbstract';
