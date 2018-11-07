@@ -2,7 +2,7 @@ const request = require('request');
 const showdown = require('showdown');
 
 var pluFormel = {
-    getHtmlRuleAbstract: function (ruleName) {
+    fetchRuleAbstract: function (ruleName) {
         const rulesEncode = {
             'B1_T_BANDE': '000', 'B1_BANDE': '000',
             'B1_ART_71': '002', 'B1_ART_6': '001',
