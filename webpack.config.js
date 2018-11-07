@@ -21,6 +21,7 @@ module.exports = [
                 }
             ]
         },
-        target: 'node'
+        target: 'node',
+        node: {global: true}
     }
 ];
