@@ -234,9 +234,9 @@ Le standard CNIG pourrait proposer des extensions pour l'instanciation de ces r�
 
 SmartPLU tente à l'aide de technique d'IA d'extraire les informations des textes des documents d'urbanisme présent sur le [Géoportail de l'urbanisme](https://www.geoportail-urbanisme.gouv.fr).
 
-Dans un premier temps, afin de s'assurer que les résultats sont facilement exploitables par des outils de type SimPLU, SmarPLU produira une instanciation des règles au format CSV sur la base des règles "IAUIDF".
+Dans un premier temps, afin de s'assurer que les résultats sont facilement exploitables par des outils de type SimPLU3D, SmartPLU produira une instanciation des règles au format CSV sur la base des règles "IAUIDF".
 
-Dès lors, SimPLU pourra prendre ces données en entrée pour :
+Dès lors, SimPLU3D pourra prendre ces données en entrée pour :
 
 * Fournir une idée de la constructibilité engendré par le PLU
 * Vérifier que des bâtiments ou projets de bâtiment sont conformes aux règles
