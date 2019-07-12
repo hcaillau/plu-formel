@@ -19,175 +19,158 @@
 
 <body>
   <article class="markdown-body">
-    <h1 id="plu-formel"><a href="#plu-formel" class="anchor"></a>plu-formel</h1><h2 id="1-description"><a href="#1-description" class="anchor"></a>1 - Description</h2><p>L&#39;approche de formalisation des PLU présentée ici a été expérimentée dans le cadre du projet SimPLU. Elle résulte des constats suivant :</p>
+    <h1 id="registre-de-r-gles-simplu3d"><a href="#registre-de-r-gles-simplu3d" class="anchor"></a>Registre de règles SimPLU3D</h1><h2 id="description"><a href="#description" class="anchor"></a>Description</h2><p>L&#39;approche de formalisation des PLU présentée ici a été expérimentée dans le cadre du projet SimPLU3D. Elle résulte des constats suivant :</p>
 <ul>
 <li>De nombreuses informations concernant les restrictions de construction sont prisonnière des PDF (hauteur maximale, recul par rapport à la voirie, etc.)</li>
 <li>Les variantes de rédaction et la complexité des rédactions rendent l&#39;extraction automatique difficile à partir des textes</li>
 </ul>
 <p>Elle postule que <strong>pour pouvoir vérifier automatiquement les règles d&#39;urbanisme, il faut formaliser le contenu du règlement</strong>. Qu&#39;importe le format, pour chaque parcelle, il faut connaître le CES maximum, la hauteur maximale de construction, etc.</p>
-<h2 id="2-mise-en-garde"><a href="#2-mise-en-garde" class="anchor"></a>2 - Mise en garde</h2><p>Formaliser entièrement les documents d&#39;urbanisme est une problématique complexe :</p>
+<h2 id="mise-en-garde"><a href="#mise-en-garde" class="anchor"></a>Mise en garde</h2><p>Formaliser entièrement les documents d&#39;urbanisme est une problématique complexe :</p>
 <ul>
 <li>Le contexte cartographique est complexe (références aux routes, etc.)</li>
 <li>La conditionnelle est complexe (les règles dépendent du type de construction, etc.)</li>
 </ul>
 <p><strong>On se concentrera d&#39;abord sur la formalisation de règles &quot;primitives&quot; et on traîtera plus tard la composition des règles</strong>.</p>
-<h2 id="3-principaux-concepts"><a href="#3-principaux-concepts" class="anchor"></a>3 - Principaux concepts</h2><h3 id="3-1-r-gle"><a href="#3-1-r-gle" class="anchor"></a>3.1 - Règle</h3><p>Une règle est définie par :</p>
+<p>En outre, des travaux sont en cours pour affiner la modélisation de ce registre de règle avec l&#39;équipe SmartPLU. Ces travaux portent en particulier sur :</p>
 <ul>
-<li>Un identifiant (ex : <code>CORE-0001</code>)</li>
-<li>Un titre (ex : <code>Restriction sur la hauteur de construction</code>)</li>
-<li>Un modèle de phrase avec des paramètres (ex : <code>La hauteur de construction ne doit pas dépasser {{ HAUTEUR_MAX }} mètres</code>)</li>
-<li>Des paramètres définis par :<ul>
-<li>Un nom (ex : <code>HAUTEUR_MAX</code>)</li>
-<li>Un type (ex : <code>Real</code>)</li>
+<li>L&#39;utilisation du format XML pour la modélisation des règles d&#39;urbanisme (production des schémas XSD associés)</li>
+<li>La gestion du lien entre les règles dans un tel format et les documents d&#39;urbanisme présents sur le GpU</li>
 </ul>
-</li>
-<li>Des notes et schémas permettant de comprendre comment interpréter la règle</li>
+<h2 id="concepts"><a href="#concepts" class="anchor"></a>Concepts</h2><h3 id="r-gle-d-39-urbanisme"><a href="#r-gle-d-39-urbanisme" class="anchor"></a>Règle d&#39;urbanisme</h3><p>Une règle sur une zone d&#39;urbanisme est définie à l&#39;aide des propriétés suivantes :</p>
+<table>
+<thead>
+<tr>
+<th>Propriété</th>
+<th>Type</th>
+<th>Description</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id</code></td>
+<td><code>URL</code></td>
+<td>URI identifiant la règle d&#39;urbanisme</td>
+<td><a href="https://mborne.github.io/plu-formel/registry/IAUIDF-001" target="_blank">https://mborne.github.io/plu-formel/registry/IAUIDF-001</a></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>Nom de la règle pour présentation</td>
+<td>&quot;Distance minimale à la voirie&quot;</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><code>string</code></td>
+<td>Règle sous forme de phrase avec des paramètres</td>
+<td><code>Les bâtiments ne doivent pas être construits à une distance inférieure à {{ B1_ART_6 }} de la voirie.</code></td>
+</tr>
+<tr>
+<td><code>params</code></td>
+<td><code>RuleParams</code></td>
+<td>Valeurs nommées définissants les paramètres de la règle d&#39;urbanisme</td>
+<td><code>B1_ART_6 de type numérique</code></td>
+</tr>
+</tbody></table>
+<p>Remarque : L&#39;URI définissant la règle doit être déréférençable et donner des précisions sur l&#39;interprétation de la règle d&#39;urbanisme.</p>
+<h3 id="registre-de-r-gles"><a href="#registre-de-r-gles" class="anchor"></a>Registre de règles</h3><p>Un registre de règles représente un ensemble de règles.</p>
+<h3 id="r-gles-pour-la-n-cogiation-de-contenu"><a href="#r-gles-pour-la-n-cogiation-de-contenu" class="anchor"></a>Règles pour la nécogiation de contenu</h3><ul>
+<li>L&#39;URI identifiant la règle doit être sans extension et produire une page HTML</li>
+<li>L&#39;ajout d&#39;un suffixe <code>.xsd</code> à un identifiant de règle doit fournir le schéma XSD décrivant entre autres les paramètres</li>
+<li>L&#39;ajout d&#39;un suffixe <code>.json</code> doit fournir le schéma JSON pour l&#39;instanciation de la règle</li>
 </ul>
-<h3 id="3-2-registre-de-r-gles"><a href="#3-2-registre-de-r-gles" class="anchor"></a>3.2 - Registre de règles</h3><p>Un registre de règles expose un ensemble de règle en vue de leur exploitation dans les outils en respectant les principes suivants :</p>
+<p>Exemple :</p>
 <ul>
-<li>Une règle = Une URL qui affiche par défaut une fiche explicative (ex : <code>https://plu-rule.example.org/registry/CORE-0001</code>)</li>
-<li>La négociation de contenu permet d&#39;accéder aux informations dans des formats exploitables pour les applications</li>
+<li><a href="https://mborne.github.io/plu-formel/registry/IAUIDF-001" target="_blank">https://mborne.github.io/plu-formel/registry/IAUIDF-001</a></li>
+<li><a href="https://mborne.github.io/plu-formel/registry/IAUIDF-001.xsd" target="_blank">https://mborne.github.io/plu-formel/registry/IAUIDF-001.xsd</a></li>
+<li><a href="https://mborne.github.io/plu-formel/registry/IAUIDF-001.json" target="_blank">https://mborne.github.io/plu-formel/registry/IAUIDF-001.json</a></li>
 </ul>
-<p>Par exemple, pour les applications générant des textes de document d&#39;urbanisme <code>https://plu-rule.example.org/registry/CORE-0001.json</code> renvoie la définition de la règle avec les paramètres décrit sous forme d&#39;un schema JSON.</p>
-<h3 id="3-3-instance-de-r-gle"><a href="#3-3-instance-de-r-gle" class="anchor"></a>3.3 - Instance de règle</h3><p>Une instance de règle est définie par :</p>
+<h2 id="instanciation-des-r-gles-d-39-urbanisme"><a href="#instanciation-des-r-gles-d-39-urbanisme" class="anchor"></a>Instanciation des règles d&#39;urbanisme</h2><h3 id="principe"><a href="#principe" class="anchor"></a>Principe</h3><p>On propose dans un premier temps de fournir les informations suivantes pour définir les règles qui s&#39;appliquent aux zones d&#39;un document d&#39;urbanisme:</p>
+<table>
+<thead>
+<tr>
+<th>Nom</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>document_id</td>
+<td><code>URL</code></td>
+<td>URL identifiant le document d&#39;urbanisme (ex : <a href="https://www.geoportail-urbanisme.gouv.fr/document/by-id/69f0e42b13c577e63186146f9f1e65c5" target="_blank">https://www.geoportail-urbanisme.gouv.fr/document/by-id/69f0e42b13c577e63186146f9f1e65c5</a> )</td>
+</tr>
+<tr>
+<td>document</td>
+<td><code>string</code></td>
+<td>Le nom du document (ex : <code>25392_PLU_20170602</code>)</td>
+</tr>
+<tr>
+<td>zone</td>
+<td>̀<code>string</code></td>
+<td>Libelle de la zone d&#39;urbanisme (équivalent à ZONE_URBA.LIBELLE dans le standard CNIG, ex : <code>UAb</code>)</td>
+</tr>
+<tr>
+<td>rule_id</td>
+<td><code>URL</code></td>
+<td>URL pointant sur la fiche descriptive de la règle (ex : <a href="https://mborne.github.io/plu-formel/registry/IAUIDF-001" target="_blank">https://mborne.github.io/plu-formel/registry/IAUIDF-001</a>)</td>
+</tr>
+<tr>
+<td>citation</td>
+<td><code>string</code></td>
+<td>Extrait du texte du document d&#39;urbanisme fournissant définissant les paramètres (produit par SmartPLU)</td>
+</tr>
+<tr>
+<td>params</td>
+<td><code>RuleParams</code></td>
+<td>Valeurs des paramètres de la règles</td>
+</tr>
+</tbody></table>
+<h3 id="format-xml"><a href="#format-xml" class="anchor"></a>Format XML</h3><p><strong>POUR DISCUSSION AVEC NUMEN/SMARTPLU AVANT PRODUCTION XSD</strong></p>
+<p>Il est proposé de :</p>
 <ul>
-<li>Une zone sur laquelle la règle s&#39;applique (ex : une zone d&#39;urbanisme)</li>
-<li>L&#39;identifiant de la règle d&#39;urbanisme (ex : <a href="https://plu-rule.example.org/registry/CORE-0001" target="_blank">https://plu-rule.example.org/registry/CORE-0001</a>)</li>
-<li>La valeur des paramètres de la règle (ex : <code>{HAUTEUR_MAX: 9}</code>)</li>
+<li>Travailler avec un fichier XML par document d&#39;urbanisme présent sur le GpU (ex : <code>69f0e42b13c577e63186146f9f1e65c5.xml</code>)</li>
+<li>De remplir le fichier comme suit :</li>
 </ul>
-<h3 id="3-4-instanciantion-des-r-gles-par-fichier-csv"><a href="#3-4-instanciantion-des-r-gles-par-fichier-csv" class="anchor"></a>3.4 - Instanciantion des règles par fichier CSV</h3><blockquote>
-<p>ATTENTION : Cette partie est une ébauche pour discussion avec SmartPLU!</p>
-</blockquote>
-<p>En première approche, il est possible d&#39;instancier les règles d&#39;urbanisme s&#39;appliquant sur les zones d&#39;un PLU à l&#39;aide d&#39;un fichier CSV les colonnes décrites ci-après.</p>
-<h3 id="3-4-1-colonnes-pour-l-39-identification-du-document-d-39-urbanisme"><a href="#3-4-1-colonnes-pour-l-39-identification-du-document-d-39-urbanisme" class="anchor"></a>3.4.1 - Colonnes pour l&#39;identification du document d&#39;urbanisme</h3><ul>
-<li><strong>DOCUMENT</strong> : Nom de dossier du document d&#39;urbanisme standardisé par le CNIG (ex : <code>25349_PLU_20010101</code>).</li>
+<pre><code class="language-xml">&lt;document id=&quot;https://www.geoportail-urbanisme.gouv.fr/document/by-id/69f0e42b13c577e63186146f9f1e65c5&quot; name=&quot;25392_PLU_20170602&quot;&gt;
+    &lt;zones&gt;
+        &lt;zone name=&quot;A&quot; /&gt;
+        &lt;zone name=&quot;Aa&quot; /&gt;
+        &lt;zone name=&quot;Au&quot; /&gt;
+        &lt;zone name=&quot;N&quot; /&gt;
+        &lt;zone name=&quot;U&quot;&gt;
+            &lt;rules&gt;
+                &lt;!-- Les bâtiments ne doivent pas être construits à une distance inférieure à 6.0 mètres de la voirie. --&gt;
+                &lt;rule id=&quot;https://mborne.github.io/plu-formel/registry/IAUIDF-001&quot;&gt;
+                    &lt;params&gt;
+                        &lt;B1_ART_6&gt;6.0&lt;/B1_ART_6&gt;
+                    &lt;/params&gt;
+                &lt;/rule&gt;
+            &lt;/rules&gt;
+        &lt;/zone&gt;
+    &lt;/zones&gt;
+&lt;/document&gt;</code></pre>
+<h3 id="format-json"><a href="#format-json" class="anchor"></a>Format JSON</h3><p><strong>Pour produire en parallèle des schémas JSON équivalents</strong></p>
+<pre><code class="language-json">{
+    &quot;id&quot;: &quot;https://www.geoportail-urbanisme.gouv.fr/document/by-id/69f0e42b13c577e63186146f9f1e65c5&quot;,
+    &quot;name&quot;: &quot;25392_PLU_20170602&quot;,
+    &quot;zones&quot;: [
+        {
+            &quot;name&quot;:&quot;A&quot;,
+            &quot;rules&quot;: [
+                {
+                    &quot;id&quot;:&quot;https://mborne.github.io/plu-formel/registry/IAUIDF-001&quot;,
+                    &quot;params&quot;: {
+                        &quot;B1_ART_6&quot;: 6.0
+                    }
+                }
+            ]
+        }
+    ]
+}</code></pre>
+<h2 id="resources"><a href="#resources" class="anchor"></a>Resources</h2><ul>
+<li><a href="poc.html">Preuves de concepts et démonstrateurs</a></li>
+<li><a href="legacy-csv.html">Principe d&#39;instanciation des règles en CSV (ancien fonctionnement)</a></li>
+<li><a href="projects.html">Relation possible entre ce registre de règle et d&#39;autres projets</a></li>
 </ul>
-<h3 id="3-4-2-colonnes-pour-l-39-identification-de-la-zone-d-39-urbanisme"><a href="#3-4-2-colonnes-pour-l-39-identification-de-la-zone-d-39-urbanisme" class="anchor"></a>3.4.2 - Colonnes pour l&#39;identification de la zone d&#39;urbanisme</h3><ul>
-<li><strong>INSEE</strong> : Code INSEE de la commune associé à la zone d&#39;urbanisme (anciennement <code>ZONE_URBA.INSEE</code> qui a été migré dans les noms de fichier dans le standard CNIG 2017)</li>
-<li><strong>NOM_COM</strong> : Nom de la commune associée à la zone d&#39;urbanisme</li>
-<li><strong>LIBELLE</strong> : Libellé de zone d&#39;urbanisme (<code>ZONE_URBA.LIBELLE</code> dans les standards CNIG)</li>
-</ul>
-<h3 id="3-4-3-colonnes-pour-l-39-instanciation-des-r-gles"><a href="#3-4-3-colonnes-pour-l-39-instanciation-des-r-gles" class="anchor"></a>3.4.3 - Colonnes pour l&#39;instanciation des règles</h3><p>Pour instancier les règles sur les zones d&#39;urbanisme, il suffit d&#39;ajouter des colonnes correspondant aux paramètres de ces règles. Par exemple, on aura :</p>
-<ul>
-<li><p>Pour IAUIDF-000 : <a href="registry/IAUIDF-000.html#B1_BANDE">B1_BANDE</a> et <a href="registry/IAUIDF-000.html#B1_T_BANDE">B1_T_BANDE</a></p>
-</li>
-<li><p>Pour IAUIDF-001 : <a href="registry/IAUIDF-001.html#B1_ART_6">B1_ART_6</a></p>
-</li>
-<li><p>Pour IAUIDF-002 : <a href="registry/IAUIDF-002.html#B1_ART_71">B1_ART_71</a> et <a href="registry/IAUIDF-002.html#B1_ART_72">B1_ART_72</a></p>
-</li>
-<li><p>Pour IAUIDF-003 : <a href="registry/IAUIDF-003.html#B1_ART_73">B1_ART_73</a></p>
-</li>
-<li><p>Pour IAUIDF-004 : <a href="registry/IAUIDF-004.html#B1_ART_74">B1_ART_74</a></p>
-</li>
-<li><p>Pour IAUIDF-005 : <a href="registry/IAUIDF-005.html#B1_ART_8">B1_ART_8</a></p>
-</li>
-<li><p>Pour IAUIDF-006 : <a href="registry/IAUIDF-006.html#B1_ART_9">B1_ART_9</a></p>
-</li>
-<li><p>Pour IAUIDF-007 : <a href="registry/IAUIDF-007.html#B1_ART_10_m">B1_ART_10</a></p>
-</li>
-<li><p>Pour IAUIDF-008 : <a href="registry/IAUIDF-008.html#B1_ART_13">B1_ART_13</a></p>
-</li>
-<li><p>Pour IAUIDF-009 : <a href="registry/IAUIDF-009.html#B1_ART_5">B1_ART_5</a></p>
-</li>
-<li><p>Pour IAUIDF-010 : <a href="registry/IAUIDF-010.html#B1_ART_14">B1_ART_14</a></p>
-</li>
-</ul>
-<h3 id="3-4-4-remarque"><a href="#3-4-4-remarque" class="anchor"></a>3.4.4 - Remarque</h3><p>Les outils tels SimPLU devront rechercher les géométries des zones concernées par les règles en procédant à une jointure entre la table <code>ZONE_URBA</code> du <code>DOCUMENT</code> et les <code>colonnes pour l&#39;identification de la zone d&#39;urbanisme</code>.</p>
-<p>Il est possible et souhaitable en guise de variante d&#39;utiliser un format géométrique (shapefile, GeoJSON, etc.) et d&#39;ajouter une colonne géométrique correspondant à la zone concernée par la régulation.</p>
-<p>Un tel fichier peut facilement être constitué manuellement en :</p>
-<ul>
-<li>Copiant la table ZONE_URBA par exemple sous le nom ZONE_URBA_RULE</li>
-<li>Ajoutant les colonnes correspondant aux paramètres des règles</li>
-</ul>
-<h2 id="4-cas-d-39-utilisation"><a href="#4-cas-d-39-utilisation" class="anchor"></a>4 - Cas d&#39;utilisation</h2><h3 id="4-1-g-n-ration-des-textes-de-document-d-39-urbanisme"><a href="#4-1-g-n-ration-des-textes-de-document-d-39-urbanisme" class="anchor"></a>4.1 - Génération des textes de document d&#39;urbanisme</h3><p>Une application qui génère les textes des documents d&#39;urbanisme peut procéder comme suit :</p>
-<ul>
-<li>Elle fait choisir une règle à ajouter à une zone</li>
-<li>Elle récupère la définition de la règle au format JSON (<code>https://plu-rule.example.org/registry/CORE-0001.json</code>)</li>
-<li>Elle génère un formulaire pour la saisie des paramètres à l&#39;aide du schéma JSON (voir <a href="https://github.com/json-editor/json-editor#json-editor" target="_blank">json-editor</a>)</li>
-<li>Elle injecte les paramètres dans le modèle de phrase</li>
-</ul>
-<p>Et le tour est joué : On ajoute au document &quot;La hauteur de construction ne doit pas dépasser <strong>9</strong> mètres&quot;</p>
-<h3 id="4-2-visualisation-de-r-gles-d-39-urbanisme"><a href="#4-2-visualisation-de-r-gles-d-39-urbanisme" class="anchor"></a>4.2 - Visualisation de règles d&#39;urbanisme</h3><p>Dès lors que les règles sont identifiées, il est possible pour chaque règle de mettre en place un code informatique permettant de les comprendre.</p>
-<p>Par exemple, pour <a href="https://plu-rule.example.org/registry/CORE-0001" target="_blank">https://plu-rule.example.org/registry/CORE-0001</a>, on peut extruder la parcelle en fonction de <code>HAUTEUR</code> et colorier le volume en bleu pour matérialiser le volume dans lequel doit se trouver le bâtiment.</p>
-<p>Pour une règle de recul par rapport au fond de la parcelle, on peut mettre en évidence une zone en rouge en fonction de <code>DISTANCE_RECUL</code> et</p>
-<p>En cumulant l&#39;ensemble des informations, on peut générer un volume dans lequel doit s&#39;inscrire le bâtiment ce qui donne déjà une idée sur la morphologie d&#39;un quartier engendrée par un PLU.</p>
-<p><strong>Il n&#39;y pas de magie! Pour chaque règle, il faut un code informatique et les référentiels géographiques adéquats.</strong>.</p>
-<p>A titre d&#39;exemple, il n&#39;y a pas de notion de &quot;fond de parcelle&quot; dans les bases cadastrales, encore moins des bandes sur ces parcelles en fonction de ces &quot;fonds de parcelle&quot;, etc. Ensuite, si les règles ont des variantes dans la formulation de la hauteur, la machine ne devinera pas la méthode de transposition :</p>
-<p><img src="img/32353-ua-hauteur.png" alt="Cas de hauteur définie par niveau"></p>
-<h3 id="4-3-v-rification-de-r-gles-d-39-urbanisme-ex-permis-de-construire-"><a href="#4-3-v-rification-de-r-gles-d-39-urbanisme-ex-permis-de-construire-" class="anchor"></a>4.3 - Vérification de règles d&#39;urbanisme (ex : permis de construire)</h3><p>Connaissant un projet de bâtiment défini par un modèle 3D, pour vérifier <a href="https://plu-rule.example.org/registry/CORE-0001" target="_blank">https://plu-rule.example.org/registry/CORE-0001</a>, on peut vérifier que le bâtiment ne dépasse une hauteur de <code>HAUTEUR</code> mètre.</p>
-<p>En procédant de même pour toutes les règles, on peut savoir lesquelles sont respectées ou non.</p>
-<p>Là encore, il n&#39;y a pas de magie : Pour chaque règle, il faut du code et un contexte.</p>
-<h3 id="4-4-g-n-ration-de-b-timent"><a href="#4-4-g-n-ration-de-b-timent" class="anchor"></a>4.4 - Génération de bâtiment</h3><p>Avec <a href="https://github.com/SimPLU3D/" target="_blank">SimPLU</a> par exemple, on choisit un modèle de bâtiment paramétrique :</p>
-<ul>
-<li>Un cuboid défini par un centre, une longueur, une largueur, une hauteur, une orientation</li>
-<li>Un bâtiment simple avec un toit défini par centre, longueur, largeur, h1, h2</li>
-<li>... ou tout modèle à partir des paramètres, on peut générer programmatiquement le volume</li>
-</ul>
-<p><a href="https://github.com/SimPLU3D/" target="_blank">SimPLU</a> explore l&#39;espace des paramètres en générant un ou des bâtiments, il contrôle pour chaque bâtiment généré les règles et conserve le meilleur suivant un critère (ex : le volume).</p>
-<p>Remarque :</p>
-<ul>
-<li>Il suffit donc en théorie de pouvoir valider les règles pour un modèle 3D de bâtiment pour pouvoir simuler l&#39;effet de ces règles sur la constructibilité.</li>
-<li>En pratique, il faut aussi être un peu intelligent sur l&#39;ordre de validation des règles (innutile de faire les contrôles coûteux en terme de calcul ne passent pas)</li>
-<li>En pratique, il faut même être un peu intelligent sur l&#39;exploration des paramètres (innutile de générer des bâtiment non alignés s&#39;il faut les aligner)</li>
-</ul>
-<h3 id="5-exemple-de-registre"><a href="#5-exemple-de-registre" class="anchor"></a>5 - Exemple de registre</h3><p>Le dossier <a href="registry/index.html">registry</a> donne une idée de ce à quoi pourrait ressembler les données d&#39;un registre de règles d&#39;urbanisme.</p>
-<p>Remarque : Il conviendra de le compléter avec les règles <a href="https://github.com/SimPLU3D/" target="_blank">SimPLU</a> définie pour IAU IDF.</p>
-<p>Le fichier <a href="sample/rennes.csv">sample/rennes.csv</a> illustre le principe d&#39;instanciation des règles &quot;RENNES-&quot; à l&#39;aide d&#39;un fichier CSV où :</p>
-<ul>
-<li>La première colonne <code>Nom_zone</code> permet d&#39;identifier la zone concernée du PLU</li>
-<li>Les colonnes suivantes correspondent aux paramètres d&#39;instanciation des règles</li>
-</ul>
-<h2 id="6-preuve-de-concept"><a href="#6-preuve-de-concept" class="anchor"></a>6 - Preuve de concept</h2><h3 id="6-1-d-monstrateur-simplu"><a href="#6-1-d-monstrateur-simplu" class="anchor"></a>6.1 - Démonstrateur SimPLU</h3><h4 id="6-1-1-en-entr-e"><a href="#6-1-1-en-entr-e" class="anchor"></a>6.1.1 - En entrée</h4><ul>
-<li>Embryon de registre de règle : <a href="https://demo-simplu3d.ign.fr/views/rule/view.html" target="_blank">https://demo-simplu3d.ign.fr/views/rule/view.html</a></li>
-<li>Instanciation des règles avec un CSV : <a href="https://demo-simplu3d.ign.fr/api/project/1/file/rules.csv" target="_blank">https://demo-simplu3d.ign.fr/api/project/1/file/rules.csv</a></li>
-<li>Des données géographiques : <a href="https://demo-simplu3d.ign.fr/#/project/1/file" target="_blank">https://demo-simplu3d.ign.fr/#/project/1/file</a></li>
-</ul>
-<h4 id="6-1-2-en-sortie"><a href="#6-1-2-en-sortie" class="anchor"></a>6.1.2 - En sortie</h4><ul>
-<li>Texte généré : <a href="https://demo-simplu3d.ign.fr/#/project/1/rule" target="_blank">https://demo-simplu3d.ign.fr/#/project/1/rule</a></li>
-<li>Une carte où l&#39;on peut cliquer sur les parcelles pour voir si les règles sont respectées : <a href="https://demo-simplu3d.ign.fr/#/project/1/map" target="_blank">https://demo-simplu3d.ign.fr/#/project/1/map</a></li>
-<li>Un globe où des projets de bâtiment sont proposés en fonction des règles d&#39;urbanisme : <a href="https://demo-simplu3d.ign.fr/#/project/2/globe" target="_blank">https://demo-simplu3d.ign.fr/#/project/2/globe</a></li>
-</ul>
-<h4 id="6-1-3-limites"><a href="#6-1-3-limites" class="anchor"></a>6.1.3 - Limites</h4><p>C&#39;est la v0 d&#39;un démonstrateur, limité à une zone d&#39;un PLU, avec un ensemble de règles propre à Rennes Métropole, etc. Les idées pour la suite étaient les suivantes :</p>
-<ul>
-<li>Télécharger automatiquement les données du géoportail de d&#39;urbanisme et les données du cadastre</li>
-<li>Partager les annotations sur les parcelles</li>
-<li>Finaliser une interface de saisie pour le CSV</li>
-<li>Optimiser/industrialiser le <a href="https://github.com/SimPLU3D/simplu3D-rules" target="_blank">coeur SimPLU</a>, unifier l&#39;implémentation des règles, renforcer les tests, etc.</li>
-<li>Générer des bâtiments plus réaliste</li>
-<li>...</li>
-</ul>
-<h3 id="6-2-iau-idf"><a href="#6-2-iau-idf" class="anchor"></a>6.2 - IAU IDF</h3><p>Cette expérimentation à l&#39;échelle de la région île de France s&#39;appuie sur le même principe d&#39;instanciation règles par fichier CSV que le démonstrateur simplu pour Rennes métropôle.</p>
-<p>Les règles sont toutefois différentes :</p>
-<ul>
-<li>Voir <a href="registry/index.html">registry/IAUIDF-*.md</a>) pour les règles associées</li>
-<li>Voir <a href="sample/TODO.csv">sample/TODO.csv</a> pour un exemple d&#39;instanciation des règles par fichier CSV</li>
-</ul>
-<h2 id="7-relation-possible-avec-d-39-autres-projets"><a href="#7-relation-possible-avec-d-39-autres-projets" class="anchor"></a>7 - Relation possible avec d&#39;autres projets</h2><h3 id="7-1-standard-cnig-et-g-oportail-de-l-39-urbanisme"><a href="#7-1-standard-cnig-et-g-oportail-de-l-39-urbanisme" class="anchor"></a>7.1 - Standard CNIG et Géoportail de l&#39;Urbanisme</h3><p>Le Géoportail de l&#39;Urbanisme pourrait exposer le registre des règles d&#39;urbanisme (les données de ce registre gagnerait toutefois à être hébergée dans un dépôt GitHub pour permettre des contributions)</p>
-<p>Le standard CNIG pourrait proposer des extensions pour l&#39;instanciation de ces règles. Exemple : permettre l&#39;ajout d&#39;un fichier <code>reglement.json</code> avec une structure permettant d&#39;instancier les règles générales et les règles s&#39;appliquant sur chaque zone, etc.)</p>
-<h3 id="7-2-smartplu"><a href="#7-2-smartplu" class="anchor"></a>7.2 - SmartPLU</h3><h4 id="7-2-1-principe"><a href="#7-2-1-principe" class="anchor"></a>7.2.1 - Principe</h4><p>SmartPLU tente à l&#39;aide de technique d&#39;IA d&#39;extraire les informations des textes des documents d&#39;urbanisme présent sur le <a href="https://www.geoportail-urbanisme.gouv.fr" target="_blank">Géoportail de l&#39;urbanisme</a>.</p>
-<p>Dans un premier temps, afin de s&#39;assurer que les résultats sont facilement exploitables par des outils de type SimPLU3D, SmartPLU produira une instanciation des règles au format CSV sur la base des règles &quot;IAUIDF&quot;.</p>
-<p>Dès lors, SimPLU3D pourra prendre ces données en entrée pour :</p>
-<ul>
-<li>Fournir une idée de la constructibilité engendré par le PLU</li>
-<li>Vérifier que des bâtiments ou projets de bâtiment sont conformes aux règles</li>
-<li>...</li>
-</ul>
-<h3 id="7-2-2-long-terme"><a href="#7-2-2-long-terme" class="anchor"></a>7.2.2 - Long terme</h3><p>L&#39;approche SmartPLU pourrait être intéressante pour :</p>
-<ul>
-<li>Identifier des modèles d&#39;article récurrent dans les PLU pour compléter le registre des règles</li>
-<li>Identifier les variantes de formulation (sans quoi on trouvera 150 000 modèles non exploitable)</li>
-</ul>
-<h3 id="7-3-apur"><a href="#7-3-apur" class="anchor"></a>7.3 - APUR</h3><p>L&#39;APUR publie en opendata une table <a href="http://opendata.apur.org/datasets/plu-hauteur/data" target="_blank">PLU HAUTEUR</a> conceptuellement proche de l&#39;instanciation CSV des règles d&#39;urbanisme proposée par SimPLU.</p>
-<p>On y trouve en effet une colonne &quot;Règlement hauteur&quot; prenant par exemple pour valeur &quot;de 16 à 24m&quot;.</p>
-<h3 id="7-4-plu-manager"><a href="#7-4-plu-manager" class="anchor"></a>7.4 - PLU Manager</h3><p><a href="https://www.plan-local-d-urbanisme.fr/outil-logiciel-plu-manager/" target="_blank">PLU Manager</a> génère les textes de document d&#39;urbanisme. La fonction &quot;Duplication d&#39;articles existants&quot; n&#39;est pas très loin d&#39;une fonctionnalité de création d&#39;article à partir d&#39;un modèle qui pourrait s&#39;appuyer sur un registre de règle et générer un fichier <code>reglement.json</code></p>
-<h3 id="7-5-d-39-autres-id-es-d-39-autres-r-f-rences-"><a href="#7-5-d-39-autres-id-es-d-39-autres-r-f-rences-" class="anchor"></a>7.5 - D&#39;autres idées, d&#39;autres références?</h3><p>Faire une issue sur le dépôt GitHub</p>
-<h2 id="8-remarques"><a href="#8-remarques" class="anchor"></a>8 - Remarques</h2><h3 id="8-1-cas-du-registre-de-r-gle"><a href="#8-1-cas-du-registre-de-r-gle" class="anchor"></a>8.1 - Cas du registre de règle</h3><p>L&#39;approche proposée est une exploitation pragmatique des concepts de <strong>Linked-Data</strong>.</p>
-<p>On trouve déjà cette approche en action dans d&#39;autres domaines. Par exemple, dans le domaine des projections cartagraphique, on dispose de <a href="http://epsg.io/2154" target="_blank">http://epsg.io/2154</a> qui nous renvoie une fiche et de <a href="http://epsg.io/2154.js" target="_blank">http://epsg.io/2154.js</a> qui nous fournit des données exploitables pour la bibliothèque Proj4JS. On peut alors s&#39;appuyer sur le registre pour tranformer facilement du Lambert 93 en coordonnées GPS.</p>
-<p>De plus, l&#39;approche des registres est en train de se généraliser avec INSPIRE qui l&#39;applique entre autre pour la traduction des mots clés (Voir <a href="http://inspire.ec.europa.eu/registry/" target="_blank">http://inspire.ec.europa.eu/registry/</a>)</p>
-<h3 id="8-2-cas-du-mod-le-de-r-gle"><a href="#8-2-cas-du-mod-le-de-r-gle" class="anchor"></a>8.2 - Cas du modèle de règle</h3><p>Il manque des éléments dans les primitives pour les regrouper (catégorie, etc.). Il serait logique de commencer par faire simple et d&#39;attendre les besoins des applicatifs</p>
-<p>La composition des règles nécessitera la mise en oeuvre de mécanisme de logique pour supporter des conditions d&#39;application des règles. Avec la forme actuelle des documents qui offre une grande liberté, la mise en oeuvre serait loin d&#39;être triviale.</p>
-<p>Remarque : SimPLU dispose d&#39;une composante <a href="https://github.com/SimPLU3D/simplu3D-ocl" target="_blank">simplu3d-ocl</a> (Object Constraint Language). Elle n&#39;est pas forcément optimale dans la mesure où elle est équivalente à l&#39;utilisation d&#39;un langage de script difficilement transposable en texte compréhensible par le commun des mortels.</p>
-<h3 id="8-3-cas-de-l-39-instanciation-des-r-gles-au-format-csv"><a href="#8-3-cas-de-l-39-instanciation-des-r-gles-au-format-csv" class="anchor"></a>8.3 - Cas de l&#39;instanciation des règles au format CSV</h3><p>L&#39;avantage de cette méthode est qu&#39;elle permet de simplement modéliser le réglement et de le maintenir. L&#39;inconvéniant est une une faible expressivité et un risque de devoir gérer beaucoup de paramètres. Une règle comme &quot;HAUTEUR MAXIMALE DES CONSTRUCTIONS&quot; peut varier en fonction du type de bâtiment concerné, de la voirie adjacente, etc., il faudra réfléchir au bon compromis entre exhaustivité dans la représentation réglementaire et choix pratiques.</p>
 
   </article>
 

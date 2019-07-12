@@ -4,7 +4,6 @@
 
 > La parcelle comporte {{B1_T_BANDE}} bande(s) de constructibilité sur laquelle des réglements différents s'appliquent. La surface première bande est obtenue en mesurant une profondeur de {{B1_BANDE}} m à partir des limites donnant sur la voirie.
 
-
 ## Paramètres
 
 ### B1_T_BANDE
