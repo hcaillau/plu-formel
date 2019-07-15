@@ -1,4 +1,4 @@
-# RENNES-005 - TODO
+# RENNES-005 - Développé de facade
 
 ## Modèle de phrase
 
