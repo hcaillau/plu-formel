@@ -22,7 +22,7 @@
     <h1 id="registre-de-r-gles-simplu3d"><a href="#registre-de-r-gles-simplu3d" class="anchor"></a>Registre de règles SimPLU3D</h1><blockquote>
 <p>ATTENTION : <a href="https://mborne.github.io/plu-formel/" target="_blank">https://mborne.github.io/plu-formel/</a> a vocation sur le long terme à être remplacé par <a href="https://www.geoportail-urbanisme.gouv.fr/schemas/plu-formel/1.0" target="_blank">https://www.geoportail-urbanisme.gouv.fr/schemas/plu-formel/1.0</a></p>
 </blockquote>
-<h2 id="description"><a href="#description" class="anchor"></a>Description</h2><p>L&#39;approche de formalisation des PLU présentée ici a été expérimentée dans le cadre du projet SimPLU3D. Elle résulte des constats suivant :</p>
+<h2 id="description"><a href="#description" class="anchor"></a>Description</h2><p>L&#39;approche de formalisation des PLU présentée ici a été expérimentée dans le cadre du projet SimPLU3D. Elle résulte des constats suivants :</p>
 <ul>
 <li>De nombreuses informations concernant les restrictions de construction sont prisonnières des PDF (hauteur maximale, recul par rapport à la voirie, etc.)</li>
 <li>Les variantes de rédaction et la complexité des rédactions rendent l&#39;extraction automatique difficile à partir des textes</li>
@@ -33,7 +33,7 @@
 <li>Le contexte cartographique est complexe (références aux routes, etc.)</li>
 <li>La conditionnelle est complexe (les règles dépendent du type de construction, etc.)</li>
 </ul>
-<p><strong>On se concentre d&#39;abord sur la formalisation de règles &quot;primitives&quot; et on traîtera plus tard la composition des règles</strong>.</p>
+<p><strong>On se concentre d&#39;abord sur la formalisation de règles &quot;primitives&quot; et on traitera plus tard la composition des règles</strong>.</p>
 <p>En outre, des travaux sont en cours pour affiner la modélisation de ce registre de règle avec l&#39;équipe SmartPLU. Ces travaux portent en particulier sur :</p>
 <ul>
 <li>L&#39;utilisation du format XML pour la modélisation des règles d&#39;urbanisme (production des schémas XSD associés)</li>
@@ -77,7 +77,7 @@
 <p>Remarque : </p>
 <ul>
 <li>On choisit un identifiant sous la forme <code>{AuteurDuModeleDePhrase}-{NumeroDeLaPhrase}</code> pour permettre une première étape d&#39;identification des différentes formulations textuelles</li>
-<li>Il convient toutefois de limiter au maximum le nombre de formulation car il faudra préparer des données (calcul des fonds de parcelle, des bandes, etc.) et écrire des codes pour chaque règle dans les outils qui les interpréteront</li>
+<li>Il convient toutefois de limiter au maximum le nombre de formulation car il faudra préparer des données (calcul des fonds de parcelle, des bandes, etc.) et écrire des codes pour chaque règle dans les outils qui les interprèteront</li>
 </ul>
 <h3 id="registre-de-r-gles"><a href="#registre-de-r-gles" class="anchor"></a>Registre de règles</h3><p>Un registre de règles de recenser et décrire un ensemble de règles connues.</p>
 <p>En outre, il permet d&#39;obtenir une fiche descriptive associée à l&#39;identifiant de règle. Par exemple :</p>
@@ -116,7 +116,7 @@
 <tr>
 <td><code>rule.citation</code></td>
 <td><code>string</code></td>
-<td>Extrait du texte du document d&#39;urbanisme fournissant définissant les paramètres (produit par SmartPLU)</td>
+<td>Extrait du texte du document d&#39;urbanisme définissant les paramètres (produit par SmartPLU)</td>
 </tr>
 <tr>
 <td><code>rule.params</code></td>
@@ -172,7 +172,7 @@
 &lt;/document&gt;</code></pre>
 <p>Remarques :</p>
 <ul>
-<li><p>Une règle peut avoir plusieurs paramètres fonctionnant ensembles (donc l&#39;identifiant de règle doit être différent du nom de paramètre de règle)</p>
+<li><p>Une règle peut avoir plusieurs paramètres fonctionnant ensemble (donc l&#39;identifiant de règle doit être différent du nom de paramètre de règle)</p>
 </li>
 <li><p>Pour exploiter ces données, un outil tel SimPLU devra </p>
 <ul>

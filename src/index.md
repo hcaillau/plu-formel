@@ -4,7 +4,7 @@
 
 ## Description
 
-L'approche de formalisation des PLU présentée ici a été expérimentée dans le cadre du projet SimPLU3D. Elle résulte des constats suivant :
+L'approche de formalisation des PLU présentée ici a été expérimentée dans le cadre du projet SimPLU3D. Elle résulte des constats suivants :
 
 * De nombreuses informations concernant les restrictions de construction sont prisonnières des PDF (hauteur maximale, recul par rapport à la voirie, etc.)
 * Les variantes de rédaction et la complexité des rédactions rendent l'extraction automatique difficile à partir des textes
@@ -18,7 +18,7 @@ Formaliser entièrement les documents d'urbanisme est une problématique complex
 * Le contexte cartographique est complexe (références aux routes, etc.)
 * La conditionnelle est complexe (les règles dépendent du type de construction, etc.)
 
-**On se concentre d'abord sur la formalisation de règles "primitives" et on traîtera plus tard la composition des règles**.
+**On se concentre d'abord sur la formalisation de règles "primitives" et on traitera plus tard la composition des règles**.
 
 En outre, des travaux sont en cours pour affiner la modélisation de ce registre de règle avec l'équipe SmartPLU. Ces travaux portent en particulier sur :
 
@@ -42,7 +42,7 @@ Une règle sur une zone d'urbanisme est définie à l'aide des propriétés suiv
 Remarque : 
 
 * On choisit un identifiant sous la forme `{AuteurDuModeleDePhrase}-{NumeroDeLaPhrase}` pour permettre une première étape d'identification des différentes formulations textuelles
-* Il convient toutefois de limiter au maximum le nombre de formulation car il faudra préparer des données (calcul des fonds de parcelle, des bandes, etc.) et écrire des codes pour chaque règle dans les outils qui les interpréteront
+* Il convient toutefois de limiter au maximum le nombre de formulation car il faudra préparer des données (calcul des fonds de parcelle, des bandes, etc.) et écrire des codes pour chaque règle dans les outils qui les interprèteront
 
 ### Registre de règles
 
@@ -71,9 +71,9 @@ On propose dans un premier temps d'annexer ces informations aux zones d'un docum
 | --------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | `document.id`   | `URL`        | URL identifiant le document d'urbanisme (ex : https://www.geoportail-urbanisme.gouv.fr/document/by-id/69f0e42b13c577e63186146f9f1e65c5 ) |
 | `document.name` | `string`     | Le nom du document (ex : `25392_PLU_20170602`)                                                                                           |
-| `zone.code`     | ̀`string`    | Libelle de la zone d'urbanisme (équivalent à ZONE_URBA.LIBELLE dans le standard CNIG, ex : `UAb`)                                        |
+| `zone.code`     | ̀`string`     | Libelle de la zone d'urbanisme (équivalent à ZONE_URBA.LIBELLE dans le standard CNIG, ex : `UAb`)                                        |
 | `rule.id`       | `URL`        | URL pointant sur la fiche descriptive de la règle (ex : https://mborne.github.io/plu-formel/registry/IAUIDF-001)                         |
-| `rule.citation` | `string`     | Extrait du texte du document d'urbanisme fournissant définissant les paramètres (produit par SmartPLU)                                   |
+| `rule.citation` | `string`     | Extrait du texte du document d'urbanisme définissant les paramètres (produit par SmartPLU)                                               |
 | `rule.params`   | `RuleParams` | Liste des valeurs des paramètres nommés de la règle                                                                                      |
 
 ### Format XML
@@ -129,7 +129,7 @@ Il est proposé de :
 
 Remarques :
 
-* Une règle peut avoir plusieurs paramètres fonctionnant ensembles (donc l'identifiant de règle doit être différent du nom de paramètre de règle)
+* Une règle peut avoir plusieurs paramètres fonctionnant ensemble (donc l'identifiant de règle doit être différent du nom de paramètre de règle)
 
 * Pour exploiter ces données, un outil tel SimPLU devra 
   * Récupérer la géométrie des zones à l'aide d'une jointure attributaire entre `ZONE_URBA.LIBELLE` et `zone.code`
