@@ -18,7 +18,7 @@ Formaliser entièrement les documents d'urbanisme est une problématique complex
 * Le contexte cartographique est complexe (références aux routes, etc.)
 * La conditionnelle est complexe (les règles dépendent du type de construction, etc.)
 
-**On se concentrera d'abord sur la formalisation de règles "primitives" et on traîtera plus tard la composition des règles**.
+**On se concentre d'abord sur la formalisation de règles "primitives" et on traîtera plus tard la composition des règles**.
 
 En outre, des travaux sont en cours pour affiner la modélisation de ce registre de règle avec l'équipe SmartPLU. Ces travaux portent en particulier sur :
 
@@ -62,9 +62,9 @@ Voir [Registre des règles SimPLU](registry/index.md) pour les règles IAUIDF/Ca
 
 ### Principe
 
-Instancier les règles d'urbanisme revient à fournir les paramètres des règles d'urbanisme s'appliquant sur les différentes zones d'un PLU.
+Instancier les règles d'urbanisme revient à fournir la liste des règles et leurs paramètres s'appliquant sur les différentes zones d'un PLU. 
 
-On propose dans un premier temps de fournir les informations suivantes pour définir les règles qui s'appliquent aux zones d'un document d'urbanisme:
+On propose dans un premier temps d'annexer ces informations aux zones d'un document d'urbanisme en reprenant ces informations :
 
 | Nom             | Type         | Description                                                                                                                              |
 | --------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -76,8 +76,6 @@ On propose dans un premier temps de fournir les informations suivantes pour déf
 | `rule.params`   | `RuleParams` | Liste des valeurs des paramètres nommés de la règle                                                                                      |
 
 ### Format XML
-
-**POUR DISCUSSION AVEC NUMEN/SMARTPLU AVANT PRODUCTION XSD**
 
 Il est proposé de :
 
@@ -128,14 +126,19 @@ Il est proposé de :
 </pluFormel>
 ```
 
-Remarque :
+Remarques :
 
-* Un règle peut avoir plusieurs paramètres fonctionnant ensemble (identifiant de règle != nom de paramètre de règle)
-* SimPLU devra faire une jointure entre `ZONE_URBA.LIBELLE` et `zone.code` pour trouver la zone géographique, puis les parcelles, où ces règles s'appliquent
+* Une règle peut avoir plusieurs paramètres fonctionnant ensembles (donc l'identifiant de règle doit être différent du nom de paramètre de règle)
+
+* Pour exploiter ces données, un outil tel SimPLU devra 
+  * Récupérer la géométrie des zones à l'aide d'une jointure attributaire entre `ZONE_URBA.LIBELLE` et `zone.code`
+  * Récupérer ensuite les parcelles concernées à l'aide d'une jointure spatiale entre `zone.geometry` et `parcelle.geometry`
+
 * On choisit ici de dire "une zone est porteuse de règles" et de ne pas fusionner zone/rules en `<rules codeZone="U">...</rules>` pour
-  * Que le modèle de règle soit au maximum indépendant du concept de document d'urbanisme pour ne pas se priver de la possibilité d'instancier des règles sur des simples surfaciques
-  * Qu'il est soit plus naturel d'étendre un GeoJSON (ex : [ZONE_URBA.json](sample/69f0e42b13c577e63186146f9f1e65c5/ZONE_URBA.geojson) avec une propriété `rules` (sans limitation avec les formats SHAPEFILE et MAPINFO, nous proposerions un `LIB_REGLES` au niveau des `ZONE_URBA` du standard CNIG)
+  * Que le modèle de règle soit au maximum indépendant du concept de zone d'urbanisme et ainsi ne pas se priver de la possibilité d'instancier à terme des règles sur d'autres éléments
+  * Qu'il soit plus naturel d'étendre ZONE_URBA avec les règles (ex : [ZONE_URBA.json](sample/69f0e42b13c577e63186146f9f1e65c5/ZONE_URBA.geojson) avec une propriété `rules` (sans limitation avec les SIG et les formats SHAPEFILE et MAPINFO, il serait possible de définir un `LIB_REGLES` au niveau des `ZONE_URBA` du standard CNIG)
 
+* La suppression du support du format CSV permettra de supprimer la contrainte d'unicité du nom des paramètres dans l'ensemble des règles
 
 
 ## Resources

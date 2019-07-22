@@ -1,6 +1,6 @@
 # Instanciantion des règles par fichier CSV
 
-Tant que les noms des paramètres des règles d'urbanisme demeurent uniques, il est possible de mettre facilement à plat les informations en définissant les colonnes comme suit.
+Tant que les noms des paramètres des règles d'urbanisme demeurent uniques, il est possible de mettre facilement à plat les informations en définissant des colonnes correspondant au nom des paramètres.
 
 # Colonnes pour l'identification du document d'urbanisme
 

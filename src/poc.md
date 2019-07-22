@@ -1,5 +1,3 @@
-
-
 # Preuve de concept
 
 ## Démonstrateur SimPLU
@@ -32,8 +30,6 @@ C'est la v0 d'un démonstrateur, limité à une zone d'un PLU, avec un ensemble 
 
 Cette expérimentation à l'échelle de la région île de France s'appuie sur le même principe d'instanciation règles par fichier CSV que le démonstrateur simplu pour Rennes métropôle.
 
-Les règles sont toutefois différentes :
+Les règles sont toutefois différentes. Voir [registry/IAUIDF-\*.md](registry/index.md)) pour les règles associées
 
-* Voir [registry/IAUIDF-\*.md](registry/index.md)) pour les règles associées
-* Voir [sample/TODO.csv](sample/TODO.csv) pour un exemple d'instanciation des règles par fichier CSV
 
