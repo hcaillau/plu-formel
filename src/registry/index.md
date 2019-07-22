@@ -1,4 +1,4 @@
-# Registre des règles SmartPLU
+# Registre des règles SimPLU
 
 ## Règles issues du modèle CartoPLU+ développé par l'IAUIDF
 
@@ -18,7 +18,7 @@ La première règle (IAUIDF-000) définit le nombre de bandes de constructibilit
 | [IAUIDF-009](IAUIDF-009.md) | Surface minimale d'une parcelle constructible              | B1_ART_5             |
 | [IAUIDF-010](IAUIDF-010.md) | Coefficient d'occupation du sol                            | B1_ART_14            |
 
-## Règles du démonstrateur SimPLU
+## Règles du démonstrateur Rennes Métropole
 
 Les règles ci-dessous ont été proposée par Rennes Métropole dans le cadre d'un démonstrateur SimPLU visant à assister dans l'instruction des permis des construires.
 
