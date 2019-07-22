@@ -6,10 +6,10 @@
 
 L'approche de formalisation des PLU présentée ici a été expérimentée dans le cadre du projet SimPLU3D. Elle résulte des constats suivant :
 
-* De nombreuses informations concernant les restrictions de construction sont prisonnière des PDF (hauteur maximale, recul par rapport à la voirie, etc.)
+* De nombreuses informations concernant les restrictions de construction sont prisonnières des PDF (hauteur maximale, recul par rapport à la voirie, etc.)
 * Les variantes de rédaction et la complexité des rédactions rendent l'extraction automatique difficile à partir des textes
 
-Elle postule que **pour pouvoir vérifier automatiquement les règles d'urbanisme, il faut formaliser le contenu du règlement**. Qu'importe le format, pour chaque parcelle, il faut connaître le CES maximum, la hauteur maximale de construction, etc.
+Elle postule que **pour pouvoir vérifier automatiquement les règles d'urbanisme, il faut formaliser le contenu du règlement**. Qu'importe le format, pour chaque parcelle, il faut par exemple être en mesure de récupérer la hauteur maximale de construction.
 
 ## Mise en garde
 
