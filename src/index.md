@@ -1,6 +1,6 @@
 # Registre de règles SimPLU3D
 
-> ATTENTION : https://mborne.github.io/plu-formel/ a vocation sur le long terme à être remplacé par exemple par https://www.geoportail-urbanisme.gouv.fr/schemas/plu-formel/1.0
+> ATTENTION : https://mborne.github.io/plu-formel/ a vocation sur le long terme à être remplacé par https://www.geoportail-urbanisme.gouv.fr/schemas/plu-formel/1.0
 
 ## Description
 
@@ -34,23 +34,24 @@ Une règle sur une zone d'urbanisme est définie à l'aide des propriétés suiv
 
 | Propriété  | Type         | Description                                                         | Exemple                                                                                                 |
 | ---------- | ------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `id`       | `URL`        | URI identifiant la règle d'urbanisme                                | "IAUIDF-001"                                                                                              |
+| `id`       | `string`     | Identifiant la règle d'urbanisme dans le registre                   | "IAUIDF-001"                                                                                            |
 | `title`    | `string`     | Nom de la règle pour présentation                                   | "Distance minimale à la voirie"                                                                         |
 | `template` | `string`     | Règle sous forme de phrase avec des paramètres                      | `Les bâtiments ne doivent pas être construits à une distance inférieure à {{ B1_ART_6 }} de la voirie.` |
 | `params`   | `RuleParams` | Valeurs nommées définissants les paramètres de la règle d'urbanisme | `B1_ART_6 de type numérique`                                                                            |
 
 Remarque : 
 
-* Une URI construire à partir de l'identifiant fournira la fiche descriptive de la règle
-* L'URI définissant la règle doit être déréférençable et donner des précisions sur l'interprétation de la règle d'urbanisme.
+* On choisit un identifiant sous la forme `{AuteurDuModeleDePhrase}-{NumeroDeLaPhrase}` pour permettre une première étape d'identification des différentes formulations textuelles
+* Il convient toutefois de limiter au maximum le nombre de formulation car il faudra préparer des données (calcul des fonds de parcelle, des bandes, etc.) et écrire des codes pour chaque règle dans les outils qui les interpréteront
 
 ### Registre de règles
 
-Un registre de règles représente un ensemble de règles. Il permet de recenser et décrire l'ensemble des règles connues.
+Un registre de règles de recenser et décrire un ensemble de règles connues.
 
 En outre, il permet d'obtenir une fiche descriptive associée à l'identifiant de règle. Par exemple :
 
 https://mborne.github.io/plu-formel/registry/IAUIDF-001
+
 
 
 ### Exemple de registre
@@ -123,7 +124,7 @@ Il est proposé de :
             </rule>
         </rules>
     </zone>
-</pluFormel>
+</document>
 ```
 
 Remarques :

@@ -19,17 +19,17 @@
 
 <body>
   <article class="markdown-body">
-    <h1 id="instanciantion-des-r-gles-par-fichier-csv"><a href="#instanciantion-des-r-gles-par-fichier-csv" class="anchor"></a>Instanciantion des règles par fichier CSV</h1><p>Tant que les noms des paramètres des règles d&#39;urbanisme demeurent uniques, il est possible de mettre facilement à plat les informations en définissant des colonnes correspondant au nom des paramètres.</p>
-<h1 id="colonnes-pour-l-39-identification-du-document-d-39-urbanisme"><a href="#colonnes-pour-l-39-identification-du-document-d-39-urbanisme" class="anchor"></a>Colonnes pour l&#39;identification du document d&#39;urbanisme</h1><ul>
+    <h1 id="instanciation-des-r-gles-par-fichier-csv-d-pr-ci-"><a href="#instanciation-des-r-gles-par-fichier-csv-d-pr-ci-" class="anchor"></a>Instanciation des règles par fichier CSV (déprécié)</h1><p>Tant que les noms des paramètres des règles d&#39;urbanisme demeurent uniques, il est possible de mettre facilement à plat les informations en définissant des colonnes correspondant au nom des paramètres.</p>
+<h2 id="colonnes-pour-l-39-identification-du-document-d-39-urbanisme"><a href="#colonnes-pour-l-39-identification-du-document-d-39-urbanisme" class="anchor"></a>Colonnes pour l&#39;identification du document d&#39;urbanisme</h2><ul>
 <li><strong>DOCUMENT_ID</strong> : Identifiant du document d&#39;urbanisme sur le GpU (ex : <code>https://www.geoportail-urbanisme.gouv.fr/document/by-id/69f0e42b13c577e63186146f9f1e65c5</code>).</li>
 <li><strong>DOCUMENT_NAME</strong> : Nom de dossier du document d&#39;urbanisme standardisé par le CNIG (ex : <code>25349_PLU_20010101</code>).</li>
 </ul>
-<h1 id="colonnes-pour-l-39-identification-de-la-zone-d-39-urbanisme"><a href="#colonnes-pour-l-39-identification-de-la-zone-d-39-urbanisme" class="anchor"></a>Colonnes pour l&#39;identification de la zone d&#39;urbanisme</h1><ul>
+<h2 id="colonnes-pour-l-39-identification-de-la-zone-d-39-urbanisme"><a href="#colonnes-pour-l-39-identification-de-la-zone-d-39-urbanisme" class="anchor"></a>Colonnes pour l&#39;identification de la zone d&#39;urbanisme</h2><ul>
 <li><strong>INSEE</strong> : Code INSEE de la commune associé à la zone d&#39;urbanisme (anciennement <code>ZONE_URBA.INSEE</code> qui a été migré dans les noms de fichier dans le standard CNIG 2017)</li>
 <li><strong>NOM_COM</strong> : Nom de la commune associée à la zone d&#39;urbanisme</li>
 <li><strong>LIBELLE</strong> : Libellé de zone d&#39;urbanisme (<code>ZONE_URBA.LIBELLE</code> dans les standards CNIG)</li>
 </ul>
-<h1 id="colonnes-pour-l-39-instanciation-des-r-gles"><a href="#colonnes-pour-l-39-instanciation-des-r-gles" class="anchor"></a>Colonnes pour l&#39;instanciation des règles</h1><p>Pour instancier les règles sur les zones d&#39;urbanisme, il suffit d&#39;ajouter des colonnes correspondant aux paramètres de ces règles. Par exemple, on aura :</p>
+<h2 id="colonnes-pour-l-39-instanciation-des-r-gles"><a href="#colonnes-pour-l-39-instanciation-des-r-gles" class="anchor"></a>Colonnes pour l&#39;instanciation des règles</h2><p>Pour instancier les règles sur les zones d&#39;urbanisme, il suffit d&#39;ajouter des colonnes correspondant aux paramètres de ces règles. Par exemple, on aura :</p>
 <ul>
 <li><p>Pour IAUIDF-000 : <a href="registry/IAUIDF-000.html#B1_BANDE">B1_BANDE</a> et <a href="registry/IAUIDF-000.html#B1_T_BANDE">B1_T_BANDE</a></p>
 </li>

@@ -1,4 +1,4 @@
-# Preuve de concept
+# Preuves de concepts et démonstrateurs
 
 ## Démonstrateur SimPLU
 

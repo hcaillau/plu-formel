@@ -1,19 +1,19 @@
-# Instanciantion des règles par fichier CSV
+# Instanciation des règles par fichier CSV (déprécié)
 
 Tant que les noms des paramètres des règles d'urbanisme demeurent uniques, il est possible de mettre facilement à plat les informations en définissant des colonnes correspondant au nom des paramètres.
 
-# Colonnes pour l'identification du document d'urbanisme
+## Colonnes pour l'identification du document d'urbanisme
 
 * **DOCUMENT_ID** : Identifiant du document d'urbanisme sur le GpU (ex : `https://www.geoportail-urbanisme.gouv.fr/document/by-id/69f0e42b13c577e63186146f9f1e65c5`).
 * **DOCUMENT_NAME** : Nom de dossier du document d'urbanisme standardisé par le CNIG (ex : `25349_PLU_20010101`).
 
-# Colonnes pour l'identification de la zone d'urbanisme
+## Colonnes pour l'identification de la zone d'urbanisme
 
 * **INSEE** : Code INSEE de la commune associé à la zone d'urbanisme (anciennement `ZONE_URBA.INSEE` qui a été migré dans les noms de fichier dans le standard CNIG 2017)
 * **NOM_COM** : Nom de la commune associée à la zone d'urbanisme
 * **LIBELLE** : Libellé de zone d'urbanisme (`ZONE_URBA.LIBELLE` dans les standards CNIG)
 
-# Colonnes pour l'instanciation des règles
+## Colonnes pour l'instanciation des règles
 
 Pour instancier les règles sur les zones d'urbanisme, il suffit d'ajouter des colonnes correspondant aux paramètres de ces règles. Par exemple, on aura :
 
