@@ -84,8 +84,8 @@ Il est proposé de :
 * De remplir le fichier comme suit :
 
 ```xml
-<document 
-    id="https://www.geoportail-urbanisme.gouv.fr/document/by-id/69f0e42b13c577e63186146f9f1e65c5" 
+<pluFormel 
+    id="69f0e42b13c577e63186146f9f1e65c5" 
     name="25392_PLU_20170602"
 >
     <zone code="A" />
@@ -124,7 +124,7 @@ Il est proposé de :
             </rule>
         </rules>
     </zone>
-</document>
+</pluFormel>
 ```
 
 Remarques :
