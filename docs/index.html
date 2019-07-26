@@ -110,8 +110,8 @@
 </tr>
 <tr>
 <td><code>rule.id</code></td>
-<td><code>URL</code></td>
-<td>URL pointant sur la fiche descriptive de la règle (ex : <a href="https://mborne.github.io/plu-formel/registry/IAUIDF-001" target="_blank">https://mborne.github.io/plu-formel/registry/IAUIDF-001</a>)</td>
+<td><code>string</code></td>
+<td>Identifiant de la règle (ex : &quot;IAUIDF-001&quot;)</td>
 </tr>
 <tr>
 <td><code>rule.citation</code></td>
@@ -132,7 +132,7 @@
 <li><p>Pour exploiter ces données, un outil tel SimPLU devra </p>
 <ul>
 <li>Récupérer la géométrie des zones à l&#39;aide d&#39;une jointure attributaire entre <code>ZONE_URBA.LIBELLE</code> et <code>zone.code</code></li>
-<li>Récupérer ensuite les parcelles concernées à l&#39;aide d&#39;une jointure spatiale entre <code>zone.geometry</code> et <code>parcelle.geometry</code></li>
+<li>Récupérer ensuite les parcelles concernées à l&#39;aide d&#39;une jointure spatiale entre <code>ZONE_URBA.geometry</code> et <code>parcelle.geometry</code></li>
 </ul>
 </li>
 <li><p>Nous choisissons de dire &quot;une zone est porteuse de règles&quot; et de ne pas fusionner zone/rules en <code>&lt;rules codeZone=&quot;U&quot;&gt;...&lt;/rules&gt;</code> pour</p>

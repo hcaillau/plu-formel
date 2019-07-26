@@ -67,14 +67,14 @@ Instancier les règles d'urbanisme revient à fournir la liste des règles et le
 
 On propose dans un premier temps d'annexer ces informations aux zones d'un document d'urbanisme en reprenant ces informations :
 
-| Nom             | Type         | Description                                                                                                      |
-| --------------- | ------------ | ---------------------------------------------------------------------------------------------------------------- |
-| `document.id`   | `string`     | Identifiant le document d'urbanisme sur le Géoportail de L'Urbanisme (ex : `69f0e42b13c577e63186146f9f1e65c5` )  |
-| `document.name` | `string`     | Le nom du document (ex : `25392_PLU_20170602`)                                                                   |
-| `zone.code`     | ̀`string`     | Libelle de la zone d'urbanisme (équivalent à `ZONE_URBA.LIBELLE` dans le standard CNIG, ex : `UAb`)              |
-| `rule.id`       | `URL`        | URL pointant sur la fiche descriptive de la règle (ex : https://mborne.github.io/plu-formel/registry/IAUIDF-001) |
-| `rule.citation` | `string`     | Extrait du texte du document d'urbanisme définissant les paramètres (produit par SmartPLU)                       |
-| `rule.params`   | `RuleParams` | Liste des valeurs des paramètres nommés de la règle                                                              |
+| Nom             | Type         | Description                                                                                                     |
+| --------------- | ------------ | --------------------------------------------------------------------------------------------------------------- |
+| `document.id`   | `string`     | Identifiant le document d'urbanisme sur le Géoportail de L'Urbanisme (ex : `69f0e42b13c577e63186146f9f1e65c5` ) |
+| `document.name` | `string`     | Le nom du document (ex : `25392_PLU_20170602`)                                                                  |
+| `zone.code`     | ̀`string`     | Libelle de la zone d'urbanisme (équivalent à `ZONE_URBA.LIBELLE` dans le standard CNIG, ex : `UAb`)             |
+| `rule.id`       | `string`     | Identifiant de la règle (ex : "IAUIDF-001")                                                                     |
+| `rule.citation` | `string`     | Extrait du texte du document d'urbanisme définissant les paramètres (produit par SmartPLU)                      |
+| `rule.params`   | `RuleParams` | Liste des valeurs des paramètres nommés de la règle                                                             |
 
 ### Format XML
 
@@ -88,7 +88,7 @@ Nous remarquerons que :
 
 * Pour exploiter ces données, un outil tel SimPLU devra 
   * Récupérer la géométrie des zones à l'aide d'une jointure attributaire entre `ZONE_URBA.LIBELLE` et `zone.code`
-  * Récupérer ensuite les parcelles concernées à l'aide d'une jointure spatiale entre `zone.geometry` et `parcelle.geometry`
+  * Récupérer ensuite les parcelles concernées à l'aide d'une jointure spatiale entre `ZONE_URBA.geometry` et `parcelle.geometry`
 
 * Nous choisissons de dire "une zone est porteuse de règles" et de ne pas fusionner zone/rules en `<rules codeZone="U">...</rules>` pour
   * Que le modèle de règle soit au maximum indépendant du concept de zone d'urbanisme et ainsi ne pas se priver de la possibilité d'instancier à terme des règles sur d'autres éléments
