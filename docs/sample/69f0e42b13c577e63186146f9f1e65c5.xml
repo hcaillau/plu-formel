@@ -5,9 +5,12 @@
     xmlns="https://www.geoportail-urbanisme.gouv.fr/schemas/plu-formel/0.1"
 >
     <zone code="A" />
-    <zone code="Aa" />
-    <zone code="Au" />
+    <!-- Les zone Aa et Au héritent des règles de A -->
+    <zone code="Aa" parent="A" />
+    <zone code="Au" parent="A" />
     <zone code="N" />
+    
+    <!-- ATTENTION : Les valeurs n'ont pas été extraite des données de 25392_PLU_20170602 -->
     <zone code="U">
         <rules>
             <!-- 1 bande de constructibilité de 6m -->

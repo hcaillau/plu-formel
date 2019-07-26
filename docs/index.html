@@ -95,8 +95,8 @@
 </thead>
 <tbody><tr>
 <td><code>document.id</code></td>
-<td><code>URL</code></td>
-<td>URL identifiant le document d&#39;urbanisme (ex : <a href="https://www.geoportail-urbanisme.gouv.fr/document/by-id/69f0e42b13c577e63186146f9f1e65c5" target="_blank">https://www.geoportail-urbanisme.gouv.fr/document/by-id/69f0e42b13c577e63186146f9f1e65c5</a> )</td>
+<td><code>string</code></td>
+<td>Identifiant le document d&#39;urbanisme sur le Géoportail de L&#39;Urbanisme (ex : <code>69f0e42b13c577e63186146f9f1e65c5</code> )</td>
 </tr>
 <tr>
 <td><code>document.name</code></td>
@@ -106,7 +106,7 @@
 <tr>
 <td><code>zone.code</code></td>
 <td>̀<code>string</code></td>
-<td>Libelle de la zone d&#39;urbanisme (équivalent à ZONE_URBA.LIBELLE dans le standard CNIG, ex : <code>UAb</code>)</td>
+<td>Libelle de la zone d&#39;urbanisme (équivalent à <code>ZONE_URBA.LIBELLE</code> dans le standard CNIG, ex : <code>UAb</code>)</td>
 </tr>
 <tr>
 <td><code>rule.id</code></td>
@@ -124,66 +124,22 @@
 <td>Liste des valeurs des paramètres nommés de la règle</td>
 </tr>
 </tbody></table>
-<h3 id="format-xml"><a href="#format-xml" class="anchor"></a>Format XML</h3><p>Il est proposé de :</p>
+<h3 id="format-xml"><a href="#format-xml" class="anchor"></a>Format XML</h3><p>Il est proposé de travailler avec un fichier XML par document d&#39;urbanisme présent sur le GpU (ex : <code>69f0e42b13c577e63186146f9f1e65c5.xml</code>)</p>
+<p>L&#39;exemple suivant illustre le contenu du fichier XML : <a href="sample/69f0e42b13c577e63186146f9f1e65c5.xml">sample/69f0e42b13c577e63186146f9f1e65c5.xml</a></p>
+<p>Le fichier XML obéit au schéma suivant : <a href="plu-formel.xsd">plu-formel.xsd</a> (DRAFT)</p>
+<p>Nous remarquerons que :</p>
 <ul>
-<li>Travailler avec un fichier XML par document d&#39;urbanisme présent sur le GpU (ex : <code>69f0e42b13c577e63186146f9f1e65c5.xml</code>)</li>
-<li>De remplir le fichier comme suit :</li>
-</ul>
-<pre><code class="language-xml">&lt;pluFormel 
-    id=&quot;69f0e42b13c577e63186146f9f1e65c5&quot; 
-    name=&quot;25392_PLU_20170602&quot;
-&gt;
-    &lt;zone code=&quot;A&quot; /&gt;
-    &lt;zone code=&quot;Aa&quot; /&gt;
-    &lt;zone code=&quot;Au&quot; /&gt;
-    &lt;zone code=&quot;N&quot; /&gt;
-    &lt;zone code=&quot;U&quot;&gt;
-        &lt;rules&gt;
-            &lt;!-- 1 bande de constructibilité de 6m --&gt;
-            &lt;rule id=&quot;IAUIDF-000&quot;&gt;
-                &lt;param name=&quot;B1_T_BANDE&quot;&gt;1&lt;/param&gt;
-                &lt;param name=&quot;B1_BANDE&quot;&gt;6.0&lt;/param&gt;
-                &lt;citation&gt;
-                ... extrait de texte définissant la contrainte...
-                &lt;/citation&gt;
-            &lt;/rule&gt;
-
-            &lt;!-- IAUIDF-007 - Hauteur maximale des constructions --&gt;
-            &lt;rule id=&quot;IAUIDF-001&quot;&gt;
-                &lt;params&gt;
-                    &lt;param name=&quot;B1_ART_6&quot;&gt;6.0&lt;/param&gt;
-                &lt;/params&gt;
-            &lt;/rule&gt;
-
-            &lt;!--
-            Plusieurs apparition d&#39;un même id sont possibles si une même règle IAUIDF-XXX 
-            instanciée plusieurs fois a du sens
-            --&gt;
-            &lt;rule id=&quot;IAUIDF-XXX&quot;&gt;
-                &lt;param name=&quot;B1_ART_XX&quot;&gt;4&lt;/param&gt;
-                &lt;param name=&quot;B1_ART_XX_unit&quot;&gt;1&lt;/param&gt;
-            &lt;/rule&gt;
-            &lt;rule id=&quot;IAUIDF-XXX&quot;&gt;
-                &lt;param name=&quot;B1_ART_XX&quot;&gt;6&lt;/param&gt;
-                &lt;param name=&quot;B1_ART_XX_unit&quot;&gt;2&lt;/param&gt;
-            &lt;/rule&gt;
-        &lt;/rules&gt;
-    &lt;/zone&gt;
-&lt;/pluFormel&gt;</code></pre>
-<p>Remarques :</p>
-<ul>
-<li><p>Une règle peut avoir plusieurs paramètres fonctionnant ensemble (donc l&#39;identifiant de règle doit être différent du nom de paramètre de règle)</p>
-</li>
 <li><p>Pour exploiter ces données, un outil tel SimPLU devra </p>
 <ul>
 <li>Récupérer la géométrie des zones à l&#39;aide d&#39;une jointure attributaire entre <code>ZONE_URBA.LIBELLE</code> et <code>zone.code</code></li>
 <li>Récupérer ensuite les parcelles concernées à l&#39;aide d&#39;une jointure spatiale entre <code>zone.geometry</code> et <code>parcelle.geometry</code></li>
 </ul>
 </li>
-<li><p>On choisit ici de dire &quot;une zone est porteuse de règles&quot; et de ne pas fusionner zone/rules en <code>&lt;rules codeZone=&quot;U&quot;&gt;...&lt;/rules&gt;</code> pour</p>
+<li><p>Nous choisissons de dire &quot;une zone est porteuse de règles&quot; et de ne pas fusionner zone/rules en <code>&lt;rules codeZone=&quot;U&quot;&gt;...&lt;/rules&gt;</code> pour</p>
 <ul>
 <li>Que le modèle de règle soit au maximum indépendant du concept de zone d&#39;urbanisme et ainsi ne pas se priver de la possibilité d&#39;instancier à terme des règles sur d&#39;autres éléments</li>
-<li>Qu&#39;il soit plus naturel d&#39;étendre ZONE_URBA avec les règles (ex : <a href="sample/69f0e42b13c577e63186146f9f1e65c5/ZONE_URBA.geojson">ZONE_URBA.json</a> avec une propriété <code>rules</code> (sans limitation avec les SIG et les formats SHAPEFILE et MAPINFO, il serait possible de définir un <code>LIB_REGLES</code> au niveau des <code>ZONE_URBA</code> du standard CNIG)</li>
+<li>Qu&#39;il soit plus naturel d&#39;étendre <code>ZONE_URBA</code> avec les règles (ex : <a href="sample/69f0e42b13c577e63186146f9f1e65c5/ZONE_URBA.geojson">ZONE_URBA.json</a> avec une propriété <code>rules</code></li>
+<li>Stocker ces informations dans un <code>LIB_REGLES</code> au niveau des <code>ZONE_URBA</code> serait possible sans les limitations des SIG et leurs formats</li>
 </ul>
 </li>
 <li><p>La suppression du support du format CSV permettra de supprimer la contrainte d&#39;unicité du nom des paramètres dans l&#39;ensemble des règles</p>

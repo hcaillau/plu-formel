@@ -67,80 +67,35 @@ Instancier les règles d'urbanisme revient à fournir la liste des règles et le
 
 On propose dans un premier temps d'annexer ces informations aux zones d'un document d'urbanisme en reprenant ces informations :
 
-| Nom             | Type         | Description                                                                                                                              |
-| --------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `document.id`   | `URL`        | URL identifiant le document d'urbanisme (ex : https://www.geoportail-urbanisme.gouv.fr/document/by-id/69f0e42b13c577e63186146f9f1e65c5 ) |
-| `document.name` | `string`     | Le nom du document (ex : `25392_PLU_20170602`)                                                                                           |
-| `zone.code`     | ̀`string`     | Libelle de la zone d'urbanisme (équivalent à ZONE_URBA.LIBELLE dans le standard CNIG, ex : `UAb`)                                        |
-| `rule.id`       | `URL`        | URL pointant sur la fiche descriptive de la règle (ex : https://mborne.github.io/plu-formel/registry/IAUIDF-001)                         |
-| `rule.citation` | `string`     | Extrait du texte du document d'urbanisme définissant les paramètres (produit par SmartPLU)                                               |
-| `rule.params`   | `RuleParams` | Liste des valeurs des paramètres nommés de la règle                                                                                      |
+| Nom             | Type         | Description                                                                                                      |
+| --------------- | ------------ | ---------------------------------------------------------------------------------------------------------------- |
+| `document.id`   | `string`     | Identifiant le document d'urbanisme sur le Géoportail de L'Urbanisme (ex : `69f0e42b13c577e63186146f9f1e65c5` )  |
+| `document.name` | `string`     | Le nom du document (ex : `25392_PLU_20170602`)                                                                   |
+| `zone.code`     | ̀`string`     | Libelle de la zone d'urbanisme (équivalent à `ZONE_URBA.LIBELLE` dans le standard CNIG, ex : `UAb`)              |
+| `rule.id`       | `URL`        | URL pointant sur la fiche descriptive de la règle (ex : https://mborne.github.io/plu-formel/registry/IAUIDF-001) |
+| `rule.citation` | `string`     | Extrait du texte du document d'urbanisme définissant les paramètres (produit par SmartPLU)                       |
+| `rule.params`   | `RuleParams` | Liste des valeurs des paramètres nommés de la règle                                                              |
 
 ### Format XML
 
-Il est proposé de :
+Il est proposé de travailler avec un fichier XML par document d'urbanisme présent sur le GpU (ex : `69f0e42b13c577e63186146f9f1e65c5.xml`)
 
-* Travailler avec un fichier XML par document d'urbanisme présent sur le GpU (ex : `69f0e42b13c577e63186146f9f1e65c5.xml`)
-* De remplir le fichier comme suit :
+L'exemple suivant illustre le contenu du fichier XML : [sample/69f0e42b13c577e63186146f9f1e65c5.xml](sample/69f0e42b13c577e63186146f9f1e65c5.xml)
 
-```xml
-<pluFormel 
-    id="69f0e42b13c577e63186146f9f1e65c5" 
-    name="25392_PLU_20170602"
->
-    <zone code="A" />
-    <zone code="Aa" />
-    <zone code="Au" />
-    <zone code="N" />
-    <zone code="U">
-        <rules>
-            <!-- 1 bande de constructibilité de 6m -->
-            <rule id="IAUIDF-000">
-                <param name="B1_T_BANDE">1</param>
-                <param name="B1_BANDE">6.0</param>
-                <citation>
-                ... extrait de texte définissant la contrainte...
-                </citation>
-            </rule>
+Le fichier XML obéit au schéma suivant : [plu-formel.xsd](plu-formel.xsd) (DRAFT)
 
-            <!-- IAUIDF-007 - Hauteur maximale des constructions -->
-            <rule id="IAUIDF-001">
-                <params>
-                    <param name="B1_ART_6">6.0</param>
-                </params>
-            </rule>
-
-            <!--
-            Plusieurs apparition d'un même id sont possibles si une même règle IAUIDF-XXX 
-            instanciée plusieurs fois a du sens
-            -->
-            <rule id="IAUIDF-XXX">
-                <param name="B1_ART_XX">4</param>
-                <param name="B1_ART_XX_unit">1</param>
-            </rule>
-            <rule id="IAUIDF-XXX">
-                <param name="B1_ART_XX">6</param>
-                <param name="B1_ART_XX_unit">2</param>
-            </rule>
-        </rules>
-    </zone>
-</pluFormel>
-```
-
-Remarques :
-
-* Une règle peut avoir plusieurs paramètres fonctionnant ensemble (donc l'identifiant de règle doit être différent du nom de paramètre de règle)
+Nous remarquerons que :
 
 * Pour exploiter ces données, un outil tel SimPLU devra 
   * Récupérer la géométrie des zones à l'aide d'une jointure attributaire entre `ZONE_URBA.LIBELLE` et `zone.code`
   * Récupérer ensuite les parcelles concernées à l'aide d'une jointure spatiale entre `zone.geometry` et `parcelle.geometry`
 
-* On choisit ici de dire "une zone est porteuse de règles" et de ne pas fusionner zone/rules en `<rules codeZone="U">...</rules>` pour
+* Nous choisissons de dire "une zone est porteuse de règles" et de ne pas fusionner zone/rules en `<rules codeZone="U">...</rules>` pour
   * Que le modèle de règle soit au maximum indépendant du concept de zone d'urbanisme et ainsi ne pas se priver de la possibilité d'instancier à terme des règles sur d'autres éléments
-  * Qu'il soit plus naturel d'étendre ZONE_URBA avec les règles (ex : [ZONE_URBA.json](sample/69f0e42b13c577e63186146f9f1e65c5/ZONE_URBA.geojson) avec une propriété `rules` (sans limitation avec les SIG et les formats SHAPEFILE et MAPINFO, il serait possible de définir un `LIB_REGLES` au niveau des `ZONE_URBA` du standard CNIG)
+  * Qu'il soit plus naturel d'étendre `ZONE_URBA` avec les règles (ex : [ZONE_URBA.json](sample/69f0e42b13c577e63186146f9f1e65c5/ZONE_URBA.geojson) avec une propriété `rules`
+  * Stocker ces informations dans un `LIB_REGLES` au niveau des `ZONE_URBA` serait possible sans les limitations des SIG et leurs formats
 
 * La suppression du support du format CSV permettra de supprimer la contrainte d'unicité du nom des paramètres dans l'ensemble des règles
-
 
 ## Resources
 
