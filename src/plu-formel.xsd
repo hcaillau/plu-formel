@@ -8,9 +8,10 @@
 >
 
 	<xs:annotation>
-		<xs:documentation>Generic application schema for networks.
-		</xs:documentation>
+		<xs:documentation>Formalisation des règles présentes dans les règlements d'urbanisme pour interprétation par des outils tels SimPLU3D</xs:documentation>
 	</xs:annotation>
+
+	<!-- Modélisation des règles -->
 
 	<xs:complexType name="RuleParamType">
 		<xs:simpleContent>
